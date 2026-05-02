@@ -106,7 +106,7 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {PACKAGES.slice(0, 3).map((pkg) => (
-              <div key={pkg.id} className="bg-white rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-white group flex flex-col h-full">
+              <div key={pkg.id} className="bg-white rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white group flex flex-col h-full">
                 <div className="relative h-72 overflow-hidden">
                   <OptimizedImage 
                     src={pkg.image} 
@@ -216,7 +216,7 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
             {HOME_CONFIG.destinations.list.map((city) => (
-              <Link to={`/packages?search=${city.name}`} key={city.name} className="group relative rounded-[32px] overflow-hidden aspect-[3/4] shadow-xl">
+              <Link to={`/packages?search=${city.name}`} key={city.name} className="group relative rounded-[32px] overflow-hidden aspect-[3/4] shadow-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl">
                 <OptimizedImage 
                   src={city.img} 
                   alt={city.name} 
