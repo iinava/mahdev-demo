@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { PACKAGES } from '../constants';
 import { Search, Filter, Clock, ArrowRight, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
 import OptimizedImage from '../components/OptimizedImage';
 
 const Packages: React.FC = () => {
@@ -107,57 +106,48 @@ const Packages: React.FC = () => {
       </section>
 
       {/* MOBILE FILTER DRAWER */}
-      <AnimatePresence>
-        {isFilterDrawerOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsFilterDrawerOpen(false)}
-              className="fixed inset-0 bg-navy/60 backdrop-blur-sm z-[100] lg:hidden"
-            />
-            <motion.div
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[40px] z-[101] p-8 lg:hidden shadow-[0_-20px_60px_rgba(0,0,0,0.15)]"
-            >
-              <div className="flex justify-between items-center mb-8">
-                <h3 className="text-2xl font-black text-navy uppercase tracking-tight">Categories</h3>
-                <button onClick={() => setIsFilterDrawerOpen(false)} className="p-2 bg-gray-100 rounded-full text-navy">
-                  <X size={20} />
-                </button>
-              </div>
-              <div className="grid grid-cols-2 gap-3 mb-10">
-                {categories.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => {
-                      setActiveCategory(cat);
-                      setIsFilterDrawerOpen(false);
-                    }}
-                    className={`px-4 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all border text-center ${
-                      activeCategory === cat
-                        ? 'bg-primary text-white border-primary shadow-xl shadow-primary/20 scale-[1.02]'
-                        : 'bg-white text-gray-500 border-gray-100 active:bg-gray-50'
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-              <button
-                onClick={() => setIsFilterDrawerOpen(false)}
-                className="w-full bg-navy text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl"
-              >
-                Show Results
+      {isFilterDrawerOpen && (
+        <>
+          <div
+            onClick={() => setIsFilterDrawerOpen(false)}
+            className="fixed inset-0 bg-navy/60 backdrop-blur-sm z-[100] lg:hidden"
+          />
+          <div
+            className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[40px] z-[101] p-8 lg:hidden shadow-[0_-20px_60px_rgba(0,0,0,0.15)]"
+          >
+            <div className="flex justify-between items-center mb-8">
+              <h3 className="text-2xl font-black text-navy uppercase tracking-tight">Categories</h3>
+              <button onClick={() => setIsFilterDrawerOpen(false)} className="p-2 bg-gray-100 rounded-full text-navy">
+                <X size={20} />
               </button>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </div>
+            <div className="grid grid-cols-2 gap-3 mb-10">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setIsFilterDrawerOpen(false);
+                  }}
+                  className={`px-4 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all border text-center ${
+                    activeCategory === cat
+                      ? 'bg-primary text-white border-primary shadow-xl shadow-primary/20 scale-[1.02]'
+                      : 'bg-white text-gray-500 border-gray-100 active:bg-gray-50'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => setIsFilterDrawerOpen(false)}
+              className="w-full bg-navy text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl"
+            >
+              Show Results
+            </button>
+          </div>
+        </>
+      )}
 
 
       <section className="py-16 md:py-24 bg-[#F9FBFF] min-h-[600px]">

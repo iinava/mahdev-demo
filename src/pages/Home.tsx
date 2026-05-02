@@ -2,7 +2,6 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { PACKAGES, CATEGORIES, getWhatsAppLink } from '../constants';
 import { ArrowRight, Star, ShieldCheck, Users, Clock, MessageCircle, MapPin } from 'lucide-react';
-import { motion } from 'motion/react';
 import OptimizedImage from '../components/OptimizedImage';
 
 import { HOME_CONFIG } from '../config/home';
@@ -16,41 +15,22 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Illustration */}
-            <motion.div
-              initial={{ opacity: 0, x: -50, scale: 0.9 }}
-              animate={{ 
-                opacity: 1, 
-                x: 0, 
-                scale: 1,
-                y: [0, -20, 0]
-              }}
-              transition={{ 
-                opacity: { duration: 1 },
-                x: { duration: 1 },
-                scale: { duration: 1 },
-                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-              }}
-              className="hidden lg:flex lg:col-span-3 justify-center"
-            >
+            {/* Left Illustration */}
+            <div className="hidden lg:flex lg:col-span-3 justify-center">
               <img 
                 src={HOME_CONFIG.hero.illustrations.left} 
                 alt="Travel Illustration Left" 
                 className="w-full h-auto"
                 loading="eager"
               />
-            </motion.div>
+            </div>
 
             {/* Center Typography Content */}
             <div className="col-span-1 lg:col-span-6 flex flex-col items-center text-center space-y-12 relative">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none -z-10" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-sky-400/25 rounded-full blur-[80px] pointer-events-none -z-10" />
               
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="space-y-6"
-              >
+              <div className="space-y-6">
                 <div className="inline-flex items-center space-x-3 bg-primary/5 px-6 py-2 rounded-full border border-primary/10 mx-auto">
                   <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">{HOME_CONFIG.hero.badge}</span>
@@ -70,14 +50,9 @@ const Home: React.FC = () => {
                 <p className="text-gray-400 text-lg md:text-xl max-w-lg mx-auto font-medium leading-relaxed">
                   {HOME_CONFIG.hero.description}
                 </p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="w-full max-w-2xl bg-white p-3 rounded-[32px] shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col md:flex-row items-center gap-2"
-              >
+              <div className="w-full max-w-2xl bg-white p-3 rounded-[32px] shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col md:flex-row items-center gap-2">
                 <div className="flex-1 px-6 py-2 border-b md:border-b-0 md:border-r border-gray-100 w-full text-left">
                   <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Destination</p>
                   <div className="flex items-center space-x-2">
@@ -99,33 +74,19 @@ const Home: React.FC = () => {
                   <span>Explore Now</span>
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </a>
-              </motion.div>
+              </div>
             </div>
 
             {/* Right Illustration */}
-            <motion.div
-              initial={{ opacity: 0, x: 50, scale: 0.9 }}
-              animate={{ 
-                opacity: 1, 
-                x: 0, 
-                scale: 1,
-                y: [0, 20, 0]
-              }}
-              transition={{ 
-                opacity: { duration: 1 },
-                x: { duration: 1 },
-                scale: { duration: 1 },
-                y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
-              }}
-              className="hidden lg:flex lg:col-span-3 justify-center"
-            >
+            {/* Right Illustration */}
+            <div className="hidden lg:flex lg:col-span-3 justify-center">
               <img 
                 src={HOME_CONFIG.hero.illustrations.right} 
                 alt="Travel Illustration Right" 
                 className="w-full h-auto"
                 loading="eager"
               />
-            </motion.div>
+            </div>
           </div>
         </div>
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, MessageCircle, MapPin, Mail, Instagram, Facebook, Twitter, ArrowRight } from 'lucide-react';
 import { WHATSAPP_NUMBER, getWhatsAppLink } from '../constants';
-import { motion, AnimatePresence } from 'motion/react';
 
 import { SITE_CONFIG } from '../config/site';
 
@@ -82,78 +81,60 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Modern Immersive Menu */}
-      <AnimatePresence mode="wait">
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[150] lg:hidden"
-          >
-            {/* Backdrop with extreme blur and subtle gradient */}
-            <div className="absolute inset-0 bg-navy/95 backdrop-blur-2xl px-6 py-8 flex flex-col h-full overflow-y-auto">
-              
-              {/* Menu Header */}
-              <div className="flex justify-between items-center mb-16">
-                <div className="flex items-center space-x-3">
-                  <div className="bg-primary p-2 rounded-xl">
-                    <span className="text-white font-bold text-lg leading-none tracking-tighter">JM</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm tracking-tight leading-none text-white">{SITE_CONFIG.name}</span>
-                    <span className="text-[6px] uppercase font-bold tracking-[0.4em] text-primary mt-1">{SITE_CONFIG.title}</span>
-                  </div>
+      {isOpen && (
+        <div className="fixed inset-0 z-[150] lg:hidden">
+          {/* Backdrop with extreme blur and subtle gradient */}
+          <div className="absolute inset-0 bg-navy/95 backdrop-blur-2xl px-6 py-8 flex flex-col h-full overflow-y-auto">
+            
+            {/* Menu Header */}
+            <div className="flex justify-between items-center mb-16">
+              <div className="flex items-center space-x-3">
+                <div className="bg-primary p-2 rounded-xl">
+                  <span className="text-white font-bold text-lg leading-none tracking-tighter">JM</span>
                 </div>
-                <button 
-                  onClick={() => setIsOpen(false)}
-                  className="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center border border-white/10 active:scale-90"
-                >
-                  <X size={20} />
-                </button>
+                <div className="flex flex-col">
+                  <span className="font-bold text-sm tracking-tight leading-none text-white">{SITE_CONFIG.name}</span>
+                  <span className="text-[6px] uppercase font-bold tracking-[0.4em] text-primary mt-1">{SITE_CONFIG.title}</span>
+                </div>
               </div>
-
-              {/* Navigation Links */}
-              <nav className="flex-grow flex flex-col justify-center space-y-6">
-                {navLinks.map((link, idx) => (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05, duration: 0.4 }}
-                  >
-                    <a
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className="group flex items-center"
-                    >
-                      <span className="text-4xl font-bold text-white hover:text-primary transition-all duration-300 tracking-tighter uppercase">
-                        {link.name}
-                      </span>
-                    </a>
-                  </motion.div>
-                ))}
-              </nav>
-
-              {/* Menu Footer */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="mt-auto pt-8 border-t border-white/10"
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center border border-white/10 active:scale-90"
               >
-                <div className="space-y-4">
-                  <p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Connect with us</p>
-                  <a href={getWhatsAppLink(`Hello ${SITE_CONFIG.name}`)} className="text-lg font-bold text-white flex items-center space-x-3">
-                    <MessageCircle size={18} className="text-primary" />
-                    <span>WhatsApp Concierge</span>
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Navigation Links */}
+            <nav className="flex-grow flex flex-col justify-center space-y-6">
+              {navLinks.map((link) => (
+                <div key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="group flex items-center"
+                  >
+                    <span className="text-4xl font-bold text-white hover:text-primary transition-all duration-300 tracking-tighter uppercase">
+                      {link.name}
+                    </span>
                   </a>
                 </div>
-              </motion.div>
+              ))}
+            </nav>
+
+            {/* Menu Footer */}
+            <div className="mt-auto pt-8 border-t border-white/10">
+              <div className="space-y-4">
+                <p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Connect with us</p>
+                <a href={getWhatsAppLink(`Hello ${SITE_CONFIG.name}`)} className="text-lg font-bold text-white flex items-center space-x-3">
+                  <MessageCircle size={18} className="text-primary" />
+                  <span>WhatsApp Concierge</span>
+                </a>
+              </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

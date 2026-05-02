@@ -5,7 +5,6 @@ import OptimizedImage from '../components/OptimizedImage';
 
 import { ABOUT_CONFIG } from '../config/about';
 
-import { motion } from 'motion/react';
 
 const About: React.FC = () => {
   return (
@@ -13,12 +12,7 @@ const About: React.FC = () => {
       {/* MINIMAL HERO */}
       <section className="bg-white pt-40 pb-20">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-4"
-          >
+          <div className="space-y-4">
             <span className="text-primary font-bold uppercase tracking-widest text-[10px]">{ABOUT_CONFIG.journey.badge}</span>
             <h1 className="text-4xl md:text-6xl font-bold text-navy tracking-tight">
               {ABOUT_CONFIG.journey.title} <span className="text-primary italic font-serif">{ABOUT_CONFIG.journey.titleAccent}</span>
@@ -26,7 +20,7 @@ const About: React.FC = () => {
             <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
               {ABOUT_CONFIG.journey.description}
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
