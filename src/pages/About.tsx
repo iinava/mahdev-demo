@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { Star, ShieldCheck, Users, Globe, Award, Heart } from 'lucide-react';
+import OptimizedImage from '../components/OptimizedImage';
 
 import { ABOUT_CONFIG } from '../config/about';
 
@@ -96,9 +97,12 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
             {ABOUT_CONFIG.founders.list.map((founder, i) => (
               <div key={i} className="group space-y-6">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-gray-50">
-                  <img src={founder.image} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={founder.name} />
-                </div>
+                <OptimizedImage 
+                  src={founder.image} 
+                  alt={founder.name} 
+                  aspectRatio="aspect-[4/5]" 
+                  className="rounded-2xl shadow-sm transition-transform duration-700 group-hover:scale-105" 
+                />
                 <div className="text-center">
                   <h4 className="text-xl font-bold text-navy">{founder.name}</h4>
                   <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mt-1">{founder.role}</p>

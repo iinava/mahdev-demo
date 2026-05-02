@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { Camera, MapPin, ZoomIn } from 'lucide-react';
+import OptimizedImage from '../components/OptimizedImage';
 
 import { GALLERY_CONFIG } from '../config/gallery';
 
@@ -21,9 +22,12 @@ const Gallery: React.FC = () => {
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {images.map((img, i) => (
                 <div key={i} className="space-y-4 group">
-                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-50">
-                      <img src={img.url} alt={img.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                   </div>
+                   <OptimizedImage 
+                     src={img.url} 
+                     alt={img.title} 
+                     aspectRatio="aspect-[4/5]" 
+                     className="rounded-2xl shadow-sm transition-transform duration-700 group-hover:scale-105" 
+                   />
                    <div className="space-y-1">
                       <h3 className="text-lg font-bold text-navy">{img.title}</h3>
                       <div className="flex items-center space-x-2 text-gray-400 text-xs font-bold uppercase tracking-widest">

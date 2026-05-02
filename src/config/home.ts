@@ -35,8 +35,8 @@ export const HOME_CONFIG = {
     list: [
       { name: 'Dubai', img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=60&w=300' },
       { name: 'Bali', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=60&w=300' },
-      { name: 'Thailand', img: 'https://images.unsplash.com/photo-1528181304800-2f140819898f?auto=format&fit=crop&q=60&w=300' },
-      { name: 'Kashmir', img: 'https://images.unsplash.com/photo-1566833925204-74950e932626?auto=format&fit=crop&q=60&w=300' },
+      { name: 'Thailand', img: 'https://plus.unsplash.com/premium_photo-1661962958462-9e52fda9954d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+      { name: 'Kashmir', img: 'https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
       { name: 'Goa', img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&q=60&w=300' },
       { name: 'Kerala', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&q=60&w=300' },
     ]

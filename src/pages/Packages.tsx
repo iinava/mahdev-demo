@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import { PACKAGES } from '../constants';
 import { Search, Filter, Clock, ArrowRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import OptimizedImage from '../components/OptimizedImage';
 
 const Packages: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -166,8 +167,12 @@ const Packages: React.FC = () => {
               {filteredPackages.map((pkg) => (
                 <div key={pkg.id} className="bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] transition-all duration-500 border border-gray-50 group flex flex-col h-full">
                   <div className="relative h-64 overflow-hidden">
-                    <img src={pkg.image} alt={pkg.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute top-5 left-5 bg-white/90 backdrop-blur px-4 py-1.5 rounded-lg text-[9px] font-bold text-primary shadow-sm uppercase tracking-widest">
+                    <OptimizedImage 
+                      src={pkg.image} 
+                      alt={pkg.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    />
+                    <div className="absolute top-5 left-5 bg-white/90 backdrop-blur px-4 py-1.5 rounded-lg text-[9px] font-bold text-primary shadow-sm uppercase tracking-widest z-20">
                       {pkg.category}
                     </div>
                   </div>

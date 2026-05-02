@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import { PACKAGES, CATEGORIES, getWhatsAppLink } from '../constants';
 import { ArrowRight, Star, ShieldCheck, Users, Clock, MessageCircle, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
+import OptimizedImage from '../components/OptimizedImage';
 
 import { HOME_CONFIG } from '../config/home';
 
@@ -14,7 +15,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* Left Illustration (SVG/WebP) */}
+            {/* Left Illustration */}
             <motion.div
               initial={{ opacity: 0, x: -50, scale: 0.9 }}
               animate={{ 
@@ -35,12 +36,12 @@ const Home: React.FC = () => {
                 src={HOME_CONFIG.hero.illustrations.left} 
                 alt="Travel Illustration Left" 
                 className="w-full h-auto"
+                loading="eager"
               />
             </motion.div>
 
             {/* Center Typography Content */}
             <div className="col-span-1 lg:col-span-6 flex flex-col items-center text-center space-y-12 relative">
-              {/* Intensified Blue radial glow behind text */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none -z-10" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-sky-400/25 rounded-full blur-[80px] pointer-events-none -z-10" />
               
@@ -71,7 +72,6 @@ const Home: React.FC = () => {
                 </p>
               </motion.div>
 
-              {/* Centered Search Bar UI */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -102,7 +102,7 @@ const Home: React.FC = () => {
               </motion.div>
             </div>
 
-            {/* Right Illustration (SVG/WebP) */}
+            {/* Right Illustration */}
             <motion.div
               initial={{ opacity: 0, x: 50, scale: 0.9 }}
               animate={{ 
@@ -123,14 +123,12 @@ const Home: React.FC = () => {
                 src={HOME_CONFIG.hero.illustrations.right} 
                 alt="Travel Illustration Right" 
                 className="w-full h-auto"
+                loading="eager"
               />
             </motion.div>
-
-            
           </div>
         </div>
 
-        {/* Dynamic Background Accents */}
         <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
         <div className="absolute bottom-[5%] right-[5%] w-[400px] h-[400px] bg-navy/5 rounded-full blur-[100px] -z-10" />
       </section>
@@ -148,8 +146,12 @@ const Home: React.FC = () => {
             {PACKAGES.slice(0, 3).map((pkg) => (
               <div key={pkg.id} className="bg-white rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-white group flex flex-col h-full">
                 <div className="relative h-72 overflow-hidden">
-                  <img src={pkg.image} alt={pkg.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                  <div className="absolute top-6 left-6 bg-white/95 backdrop-blur px-5 py-2 rounded-2xl text-[10px] font-black text-primary shadow-xl uppercase tracking-[0.2em]">
+                  <OptimizedImage 
+                    src={pkg.image} 
+                    alt={pkg.title} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
+                  />
+                  <div className="absolute top-6 left-6 bg-white/95 backdrop-blur px-5 py-2 rounded-2xl text-[10px] font-black text-primary shadow-xl uppercase tracking-[0.2em] z-20">
                     {pkg.category}
                   </div>
                 </div>
@@ -174,8 +176,8 @@ const Home: React.FC = () => {
 
                   <div className="pt-8 flex items-center justify-between border-t border-gray-50">
                     <div>
-                      <p className="text-gray-400 text-[10px] uppercase tracking-[0.2em] font-black mb-1">From</p>
-                      <p className="text-3xl font-black text-primary">{pkg.price}</p>
+                       <p className="text-gray-400 text-[10px] uppercase tracking-[0.2em] font-black mb-1">From</p>
+                       <p className="text-3xl font-black text-primary">{pkg.price}</p>
                     </div>
                     <a
                       href={`/package-details.html?id=${pkg.id}`}
@@ -228,9 +230,11 @@ const Home: React.FC = () => {
             </div>
             
             <div className="relative">
-              <div className="rounded-[40px] overflow-hidden shadow-2xl">
-                <img src={HOME_CONFIG.whyChooseUs.image} alt="Travel Experience" className="w-full h-[600px] object-cover" />
-              </div>
+              <OptimizedImage 
+                src={HOME_CONFIG.whyChooseUs.image} 
+                alt="Travel Experience" 
+                className="rounded-[40px] shadow-2xl h-[600px]" 
+              />
               <div className="absolute -top-10 -right-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
               <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl -z-10" />
             </div>
@@ -252,9 +256,13 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
             {HOME_CONFIG.destinations.list.map((city) => (
               <a href={`/packages.html?search=${city.name}`} key={city.name} className="group relative rounded-[32px] overflow-hidden aspect-[3/4] shadow-xl">
-                <img src={city.img} alt={city.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                <div className="absolute bottom-6 left-0 w-full text-center px-4">
+                <OptimizedImage 
+                  src={city.img} 
+                  alt={city.name} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 z-10" />
+                <div className="absolute bottom-6 left-0 w-full text-center px-4 z-20">
                   <p className="text-white font-black text-xl md:text-2xl tracking-tight">{city.name}</p>
                 </div>
               </a>
