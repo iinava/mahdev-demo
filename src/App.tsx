@@ -8,10 +8,12 @@ import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import CustomTour from './pages/CustomTour';
 import ScrollToTop from './components/ScrollToTop';
+import Preloader from './components/Preloader';
 
 const App: React.FC = () => {
   return (
     <Router>
+      <Preloader />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
