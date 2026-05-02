@@ -4,6 +4,8 @@ import { PACKAGES, CATEGORIES, getWhatsAppLink } from '../constants';
 import { ArrowRight, Star, ShieldCheck, Users, Clock, MessageCircle, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
 
+import { HOME_CONFIG } from '../config/home';
+
 const Home: React.FC = () => {
   return (
     <Layout>
@@ -30,7 +32,7 @@ const Home: React.FC = () => {
               className="hidden lg:flex lg:col-span-3 justify-center"
             >
               <img 
-                src="https://ouch-prod-var-cdn.icons8.com/gd/illustrations/thumbs/Sht1gZ-h7SLufmwx.webp" 
+                src={HOME_CONFIG.hero.illustrations.left} 
                 alt="Travel Illustration Left" 
                 className="w-full h-auto"
               />
@@ -50,22 +52,22 @@ const Home: React.FC = () => {
               >
                 <div className="inline-flex items-center space-x-3 bg-primary/5 px-6 py-2 rounded-full border border-primary/10 mx-auto">
                   <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Explore the World with Pride</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">{HOME_CONFIG.hero.badge}</span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-navy leading-[1.05] tracking-tight">
-                  It's time <br />
-                  to travel <span className="text-primary relative inline-block">
+                  {HOME_CONFIG.hero.title.line1} <br />
+                  {HOME_CONFIG.hero.title.line2} <span className="text-primary relative inline-block">
                     with
                     <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary/20" viewBox="0 0 100 10" preserveAspectRatio="none">
                       <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="2" />
                     </svg>
                   </span> <br />
-                  Jai Mahavir
+                  {HOME_CONFIG.hero.title.line3}
                 </h1>
 
                 <p className="text-gray-400 text-lg md:text-xl max-w-lg mx-auto font-medium leading-relaxed">
-                  Bespoke journeys curated for the modern world explorer. Create the route you want to travel with our signature concierge.
+                  {HOME_CONFIG.hero.description}
                 </p>
               </motion.div>
 
@@ -80,14 +82,14 @@ const Home: React.FC = () => {
                   <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Destination</p>
                   <div className="flex items-center space-x-2">
                     <MapPin size={14} className="text-primary" />
-                    <span className="text-navy font-bold text-sm">Dubai, UAE</span>
+                    <span className="text-navy font-bold text-sm">{HOME_CONFIG.hero.search.destination}</span>
                   </div>
                 </div>
                 <div className="flex-1 px-6 py-2 w-full text-left">
                   <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Travel Date</p>
                   <div className="flex items-center space-x-2">
                     <Clock size={14} className="text-primary" />
-                    <span className="text-navy font-bold text-sm">Choose Date</span>
+                    <span className="text-navy font-bold text-sm">{HOME_CONFIG.hero.search.dateLabel}</span>
                   </div>
                 </div>
                 <a
@@ -118,7 +120,7 @@ const Home: React.FC = () => {
               className="hidden lg:flex lg:col-span-3 justify-center"
             >
               <img 
-                src="https://ouch-prod-var-cdn.icons8.com/ey/illustrations/thumbs/UJdhKR-PzhH8lpud.webp" 
+                src={HOME_CONFIG.hero.illustrations.right} 
                 alt="Travel Illustration Right" 
                 className="w-full h-auto"
               />
@@ -143,7 +145,7 @@ const Home: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {PACKAGES.map((pkg) => (
+            {PACKAGES.slice(0, 3).map((pkg) => (
               <div key={pkg.id} className="bg-white rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-white group flex flex-col h-full">
                 <div className="relative h-72 overflow-hidden">
                   <img src={pkg.image} alt={pkg.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
@@ -202,17 +204,17 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold text-navy leading-tight">Why Travelers <span className="text-primary">Choose Us</span></h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-navy leading-tight">{HOME_CONFIG.whyChooseUs.title} <span className="text-primary">{HOME_CONFIG.whyChooseUs.titleAccent}</span></h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                With over a decade of experience in the travel industry, we understand that every journey is unique. We don't just book tickets; we create memories.
+                {HOME_CONFIG.whyChooseUs.description}
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {[
-                  { icon: <ShieldCheck className="text-primary" size={32} />, title: "Trusted Service", desc: "10,000+ happy travelers across the globe." },
-                  { icon: <Users className="text-primary" size={32} />, title: "Customized Trips", desc: "Tailor-made itineraries for your unique needs." },
-                  { icon: <Star className="text-primary" size={32} />, title: "Best Pricing", desc: "Unbeatable luxury at the most competitive rates." },
-                  { icon: <Clock className="text-primary" size={32} />, title: "24/7 Support", desc: "We are with you at every step of your journey." },
+                  { icon: <ShieldCheck className="text-primary" size={32} />, ...HOME_CONFIG.whyChooseUs.features[0] },
+                  { icon: <Users className="text-primary" size={32} />, ...HOME_CONFIG.whyChooseUs.features[1] },
+                  { icon: <Star className="text-primary" size={32} />, ...HOME_CONFIG.whyChooseUs.features[2] },
+                  { icon: <Clock className="text-primary" size={32} />, ...HOME_CONFIG.whyChooseUs.features[3] },
                 ].map((item, i) => (
                   <div key={i} className="flex flex-col space-y-3">
                     <div className="bg-light-bg w-16 h-16 rounded-2xl flex items-center justify-center">
@@ -227,7 +229,7 @@ const Home: React.FC = () => {
             
             <div className="relative">
               <div className="rounded-[40px] overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=800" alt="Travel Experience" className="w-full h-[600px] object-cover" />
+                <img src={HOME_CONFIG.whyChooseUs.image} alt="Travel Experience" className="w-full h-[600px] object-cover" />
               </div>
               <div className="absolute -top-10 -right-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
               <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl -z-10" />
@@ -241,21 +243,14 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-20 gap-8 text-center md:text-left">
             <div className="space-y-5">
-              <h2 className="text-navy font-black text-4xl md:text-6xl tracking-tight leading-tight">Popular <br className="md:hidden" /> <span className="text-primary">Destinations</span></h2>
-              <p className="text-gray-500 text-lg md:text-xl max-w-xl font-medium">Most loved escapes by our community of travelers.</p>
+              <h2 className="text-navy font-black text-4xl md:text-6xl tracking-tight leading-tight">{HOME_CONFIG.destinations.title} <br className="md:hidden" /> <span className="text-primary">{HOME_CONFIG.destinations.titleAccent}</span></h2>
+              <p className="text-gray-500 text-lg md:text-xl max-w-xl font-medium">{HOME_CONFIG.destinations.description}</p>
             </div>
             <a href="/gallery.html" className="bg-white text-navy px-10 py-4 rounded-[20px] font-black text-sm uppercase tracking-widest border border-gray-100 shadow-sm hover:border-primary hover:text-primary transition-all">Explore Gallery</a>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
-            {[
-              { name: 'Dubai', img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=60&w=300' },
-              { name: 'Bali', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=60&w=300' },
-              { name: 'Thailand', img: 'https://images.unsplash.com/photo-1528181304800-2f140819898f?auto=format&fit=crop&q=60&w=300' },
-              { name: 'Kashmir', img: 'https://images.unsplash.com/photo-1566833925204-74950e932626?auto=format&fit=crop&q=60&w=300' },
-              { name: 'Goa', img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&q=60&w=300' },
-              { name: 'Kerala', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&q=60&w=300' },
-            ].map((city) => (
+            {HOME_CONFIG.destinations.list.map((city) => (
               <a href={`/packages.html?search=${city.name}`} key={city.name} className="group relative rounded-[32px] overflow-hidden aspect-[3/4] shadow-xl">
                 <img src={city.img} alt={city.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
@@ -272,15 +267,11 @@ const Home: React.FC = () => {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-navy font-bold text-4xl tracking-tight">What Our <span className="text-primary">Travelers Say</span></h2>
+            <h2 className="text-navy font-bold text-4xl tracking-tight">{HOME_CONFIG.testimonials.title} <span className="text-primary">{HOME_CONFIG.testimonials.titleAccent}</span></h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { name: "Rahul Sharma", role: "Corporate Traveler", text: "The Dubai trip was flawless. Every detail was handled perfectly, from airport transfers to the Burj Khalifa visit. Highly recommended!", rating: 5 },
-              { name: "Anita Desai", role: "Family Vacation", text: "We took our parents to Kerala with JAI Mahavir. The houseboat experience was magical. Thank you for making it so comfortable for seniors.", rating: 5 },
-              { name: "Vikram Gill", role: "Solo Adventure", text: "Bali was a dream come true. The private guides provided by the agency were professional and very knowledgeable. Great value for money.", rating: 5 },
-            ].map((t, i) => (
+            {HOME_CONFIG.testimonials.list.map((t, i) => (
               <div key={i} className="bg-light-bg p-8 rounded-[32px] space-y-6 relative border border-white">
                 <div className="flex text-yellow-400">
                   {[...Array(t.rating)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
@@ -309,13 +300,13 @@ const Home: React.FC = () => {
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl" />
             
             <div className="relative z-10 space-y-6">
-              <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Plan Your Dream <br className="hidden md:block" /> Vacation With Us</h2>
-              <p className="text-white/80 text-xl max-w-xl">Ready to embark on your next adventure? Contact us today and let's create your perfect itinerary.</p>
+              <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">{HOME_CONFIG.cta.title} <br className="hidden md:block" /> {HOME_CONFIG.cta.titleLine2}</h2>
+              <p className="text-white/80 text-xl max-w-xl">{HOME_CONFIG.cta.description}</p>
             </div>
             
             <div className="relative z-10">
               <a
-                href={getWhatsAppLink('Hi! I want to plan my dream vacation. Please help me with itineraries.')}
+                href={getWhatsAppLink(HOME_CONFIG.cta.whatsappMessage)}
                 className="bg-white text-primary px-10 py-5 rounded-2xl font-black text-xl hover:bg-navy hover:text-white transition-all shadow-2xl flex items-center space-x-4 group"
               >
                 <MessageCircle size={28} />

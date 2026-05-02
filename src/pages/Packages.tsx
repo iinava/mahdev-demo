@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
-import { PACKAGES, getWhatsAppLink } from '../constants';
+import { PACKAGES } from '../constants';
 import { Search, Filter, Clock, ArrowRight, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 const Packages: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [filteredPackages, setFilteredPackages] = useState(PACKAGES);
+  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
 
   const categories = ['All', 'Domestic', 'International', 'Honeymoon', 'Family', 'Group', 'Pilgrimage'];
 
   useEffect(() => {
-    // Check URL params for initial category or search
     const params = new URLSearchParams(window.location.search);
     const cat = params.get('cat');
     const search = params.get('search');
@@ -21,49 +22,47 @@ const Packages: React.FC = () => {
 
   useEffect(() => {
     let result = PACKAGES;
-    
     if (activeCategory !== 'All') {
       result = result.filter(pkg => pkg.category === activeCategory);
     }
-    
     if (searchTerm) {
       result = result.filter(pkg => 
         pkg.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
         pkg.category.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-    
     setFilteredPackages(result);
   }, [activeCategory, searchTerm]);
 
   return (
     <Layout>
-      <section className="bg-white pt-32 pb-20 text-center relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
+      <section className="bg-white pt-32 pb-16 text-center relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none -z-10">
           <div className="absolute top-10 left-10 w-96 h-96 border border-navy rounded-full translate-x-[-50%] translate-y-[-50%]" />
           <div className="absolute bottom-10 right-10 w-[500px] h-[500px] border border-navy rounded-full translate-x-[50%] translate-y-[50%]" />
         </div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-6">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-4">
           <div className="inline-block bg-primary/5 px-4 py-1.5 rounded-lg border border-primary/10">
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Explore Our World</p>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold text-navy tracking-tight">Luxury <span className="text-primary italic font-serif">Escapes</span></h1>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
-            From hidden domestic gems to world-renowned international landmarks, discover journeys curated for the soul.
+          <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto font-medium leading-relaxed">
+            Curated journeys for the discerning traveler.
           </p>
         </div>
       </section>
 
-      <section className="py-6 bg-white sticky top-[68px] z-30 shadow-[0_10px_30px_rgba(0,0,0,0.02)] border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-            {/* Search */}
-            <div className="relative w-full lg:max-w-xs group">
+      {/* FILTER BAR */}
+      <section className="sticky top-[68px] z-40 bg-white/80 backdrop-blur-xl border-y border-gray-100 py-4 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-4">
+            {/* Search Input - Expands on desktop */}
+            <div className="relative flex-grow lg:flex-grow-0 lg:w-96 group">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors" size={16} />
               <input
                 type="text"
-                placeholder="Search..."
-                className="w-full pl-10 pr-10 py-3 bg-gray-50 border border-gray-100 rounded-xl text-navy text-sm font-semibold focus:bg-white focus:ring-4 focus:ring-primary/5 outline-none transition-all placeholder:text-gray-400"
+                placeholder="Where to next?"
+                className="w-full pl-11 pr-10 py-3 bg-gray-50 border border-gray-100 rounded-2xl text-navy text-sm font-bold focus:bg-white focus:ring-4 focus:ring-primary/5 outline-none transition-all placeholder:text-gray-400"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -77,25 +76,88 @@ const Packages: React.FC = () => {
               )}
             </div>
 
-            {/* Categories */}
-            <div className="flex overflow-x-auto w-full lg:w-auto space-x-2 pb-2 lg:pb-0 no-scrollbar">
+            {/* Desktop Horizontal Categories */}
+            <div className="hidden lg:flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-6 py-2.5 rounded-xl font-bold text-[10px] uppercase tracking-widest whitespace-nowrap transition-all duration-300 border ${
+                  className={`px-5 py-2.5 rounded-xl font-bold text-[10px] uppercase tracking-[0.15em] transition-all border ${
                     activeCategory === cat
-                      ? 'bg-navy text-white border-navy shadow-lg shadow-navy/10'
-                      : 'bg-white text-gray-400 border-gray-100 hover:border-primary hover:text-primary'
+                      ? 'bg-navy text-white border-navy shadow-lg shadow-navy/20'
+                      : 'bg-white text-gray-400 border-gray-100 hover:border-primary hover:text-primary hover:shadow-md'
                   }`}
                 >
                   {cat}
                 </button>
               ))}
             </div>
+
+            {/* Mobile Filter Trigger */}
+            <button
+              onClick={() => setIsFilterDrawerOpen(true)}
+              className="lg:hidden flex items-center gap-2 px-5 py-3 bg-navy text-white rounded-2xl font-bold text-xs shadow-lg active:scale-95 transition-all"
+            >
+              <Filter size={16} />
+              <span>{activeCategory === 'All' ? 'Filter' : activeCategory}</span>
+            </button>
           </div>
         </div>
       </section>
+
+      {/* MOBILE FILTER DRAWER */}
+      <AnimatePresence>
+        {isFilterDrawerOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsFilterDrawerOpen(false)}
+              className="fixed inset-0 bg-navy/60 backdrop-blur-sm z-[100] lg:hidden"
+            />
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed bottom-0 left-0 right-0 bg-white rounded-t-[40px] z-[101] p-8 lg:hidden shadow-[0_-20px_60px_rgba(0,0,0,0.15)]"
+            >
+              <div className="flex justify-between items-center mb-8">
+                <h3 className="text-2xl font-black text-navy uppercase tracking-tight">Categories</h3>
+                <button onClick={() => setIsFilterDrawerOpen(false)} className="p-2 bg-gray-100 rounded-full text-navy">
+                  <X size={20} />
+                </button>
+              </div>
+              <div className="grid grid-cols-2 gap-3 mb-10">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => {
+                      setActiveCategory(cat);
+                      setIsFilterDrawerOpen(false);
+                    }}
+                    className={`px-4 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all border text-center ${
+                      activeCategory === cat
+                        ? 'bg-primary text-white border-primary shadow-xl shadow-primary/20 scale-[1.02]'
+                        : 'bg-white text-gray-500 border-gray-100 active:bg-gray-50'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+              <button
+                onClick={() => setIsFilterDrawerOpen(false)}
+                className="w-full bg-navy text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl"
+              >
+                Show Results
+              </button>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
 
       <section className="py-16 md:py-24 bg-[#F9FBFF] min-h-[600px]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

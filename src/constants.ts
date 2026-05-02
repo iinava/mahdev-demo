@@ -1,3 +1,5 @@
+import { SITE_CONFIG } from './config/site';
+
 export interface Package {
   id: string;
   title: string;
@@ -37,7 +39,7 @@ export const PACKAGES: Package[] = [
     duration: '7 Days / 6 Nights',
     price: '₹35,000',
     highlights: ['Shikara Boat Ride', 'Gulmarg Cable Car', 'Pahalgam'],
-    image: 'https://images.unsplash.com/photo-1566833925204-74950e932626?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     description: 'Explore the breathtaking valleys and snowy mountains of Kashmir.'
   },
   {
@@ -57,7 +59,7 @@ export const PACKAGES: Package[] = [
     duration: '5 Days / 4 Nights',
     price: '₹38,000',
     highlights: ['Bangkok City Tour', 'Coral Island', 'Wat Arun'],
-    image: 'https://images.unsplash.com/photo-1528181304800-2f140819898f?auto=format&fit=crop&q=80&w=800',
+    image: 'https://plus.unsplash.com/premium_photo-1661962958462-9e52fda9954d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     description: 'Fun-filled group tour exploring the best of Thailand.'
   },
   {
@@ -72,17 +74,11 @@ export const PACKAGES: Package[] = [
   }
 ];
 
-export const CATEGORIES = [
-  'Domestic Tours',
-  'International Tours',
-  'Honeymoon Packages',
-  'Family Tours',
-  'Group Tours',
-  'Pilgrimage Tours'
-];
+export const CATEGORIES = SITE_CONFIG.categories.map(c => c.name);
 
-export const WHATSAPP_NUMBER = '919876543210'; // Example number
+export const WHATSAPP_NUMBER = SITE_CONFIG.contact.whatsapp;
 
 export const getWhatsAppLink = (message: string) => {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 };
+

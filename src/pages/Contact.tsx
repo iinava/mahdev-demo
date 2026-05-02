@@ -3,6 +3,8 @@ import Layout from '../components/Layout';
 import { Mail, Phone, MapPin, Send, MessageCircle, Clock } from 'lucide-react';
 import { getWhatsAppLink } from '../constants';
 
+import { SITE_CONFIG } from '../config/site';
+
 const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,109 +16,95 @@ const Contact: React.FC = () => {
 
   return (
     <Layout>
-      <section className="bg-light-bg py-24 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-24" />
-        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center space-y-4">
-           <h1 className="text-5xl md:text-7xl font-black text-navy leading-[1.1] tracking-tight">Let's <span className="text-primary italic">Connect</span></h1>
-           <p className="text-xl text-gray-500 max-w-2xl mx-auto">Have a question or ready to plan your trip? Reach out to us and we'll get back to you sooner than you think.</p>
+      <section className="bg-white pt-40 pb-20">
+        <div className="max-w-5xl mx-auto px-6 text-center space-y-6">
+           <h1 className="text-4xl md:text-6xl font-bold text-navy tracking-tight">Let's <span className="text-primary italic font-serif">Connect</span></h1>
+           <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">Have a question or ready to plan your trip? Reach out to us and we'll get back to you sooner than you think.</p>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <section className="py-24 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
               {/* Contact Info */}
-              <div className="space-y-12">
+              <div className="space-y-16">
                  <div className="space-y-6">
-                    <h2 className="text-3xl font-bold text-navy">Corporate <span className="text-primary">Office</span></h2>
-                    <p className="text-gray-500 max-w-md leading-relaxed">Visit our luxury experience center to discuss your travel plans in person over a cup of premium coffee.</p>
+                    <h2 className="text-2xl font-bold text-navy uppercase tracking-tight">Corporate Office</h2>
+                    <p className="text-gray-500 max-w-md leading-relaxed">Visit our experience center to discuss your travel plans in person.</p>
                  </div>
 
-                 <div className="space-y-8">
+                 <div className="space-y-10">
                     {[
-                       { icon: <MapPin className="text-primary" />, title: "Address", content: "123 Travel Plaza, Luxury Sector, Mumbai, India" },
-                       { icon: <Phone className="text-primary" />, title: "Call Us", content: "+91 98765 43210" },
-                       { icon: <Mail className="text-primary" />, title: "Email", content: "contact@jaimahavirtours.com" },
-                       { icon: <Clock className="text-primary" />, title: "Timing", content: "Mon - Sat: 10:00 AM - 7:00 PM" },
+                       { icon: <MapPin className="text-primary" size={20} />, title: "Address", content: SITE_CONFIG.contact.address },
+                       { icon: <Phone className="text-primary" size={20} />, title: "Call Us", content: SITE_CONFIG.contact.phone },
+                       { icon: <Mail className="text-primary" size={20} />, title: "Email", content: SITE_CONFIG.contact.email },
+                       { icon: <Clock className="text-primary" size={20} />, title: "Timing", content: SITE_CONFIG.contact.timing },
                     ].map((item, i) => (
                        <div key={i} className="flex items-start space-x-6">
-                          <div className="bg-light-bg p-4 rounded-2xl flex-shrink-0">
+                          <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center flex-shrink-0">
                              {item.icon}
                           </div>
                           <div>
-                             <h4 className="font-bold text-navy text-sm uppercase tracking-widest text-primary">{item.title}</h4>
+                             <h4 className="font-bold text-navy text-[10px] uppercase tracking-widest text-primary">{item.title}</h4>
                              <p className="text-lg font-medium text-navy mt-1">{item.content}</p>
                           </div>
                        </div>
                     ))}
                  </div>
-
-                 <div className="bg-primary/5 p-8 rounded-[40px] border border-primary/10 flex items-center justify-between gap-6">
-                    <div>
-                       <h4 className="font-bold text-navy">Prefer Direct Chat?</h4>
-                       <p className="text-sm text-gray-500">Instant response on WhatsApp</p>
-                    </div>
-                    <a 
-                      href={getWhatsAppLink('Hi JAI Mahavir Tours, I want to talk to an expert.')}
-                      className="bg-[#25D366] text-white p-4 rounded-2xl shadow-lg hover:bounce transition-all"
-                    >
-                       <MessageCircle size={32} />
-                    </a>
-                 </div>
               </div>
 
+
               {/* Form */}
-              <div className="bg-white p-10 rounded-[40px] shadow-2xl border border-gray-50">
-                 <h2 className="text-3xl font-bold text-navy mb-8">Quick <span className="text-primary">Enquiry</span></h2>
-                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-10">
+                 <h2 className="text-2xl font-bold text-navy uppercase tracking-tight">Quick Enquiry</h2>
+                 <form onSubmit={handleSubmit} className="space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                        <div className="space-y-2">
-                          <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Full Name</label>
+                          <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Full Name</label>
                           <input 
                             name="name"
                             required
                             type="text" 
-                            className="w-full bg-gray-50 border-none rounded-xl py-4 px-6 focus:ring-2 focus:ring-primary/20 outline-none transition-all" 
+                            className="w-full bg-transparent border-b-2 border-gray-100 py-3 focus:border-primary outline-none transition-all font-medium" 
                             placeholder="John Doe" 
                           />
                        </div>
                        <div className="space-y-2">
-                          <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Email Address</label>
+                          <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Email Address</label>
                           <input 
                             name="email"
                             required
                             type="email" 
-                            className="w-full bg-gray-50 border-none rounded-xl py-4 px-6 focus:ring-2 focus:ring-primary/20 outline-none transition-all" 
+                            className="w-full bg-transparent border-b-2 border-gray-100 py-3 focus:border-primary outline-none transition-all font-medium" 
                             placeholder="john@example.com" 
                           />
                        </div>
                     </div>
                     <div className="space-y-2">
-                       <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Subject</label>
+                       <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Subject</label>
                        <input 
                          name="subject"
                          required
                          type="text" 
-                         className="w-full bg-gray-50 border-none rounded-xl py-4 px-6 focus:ring-2 focus:ring-primary/20 outline-none transition-all" 
+                         className="w-full bg-transparent border-b-2 border-gray-100 py-3 focus:border-primary outline-none transition-all font-medium" 
                          placeholder="Enquiry for Dubai Tour" 
                        />
                     </div>
                     <div className="space-y-2">
-                       <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Message</label>
+                       <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Message</label>
                        <textarea 
                         name="message"
                         required
                         rows={4} 
-                        className="w-full bg-gray-50 border-none rounded-xl py-4 px-6 focus:ring-2 focus:ring-primary/20 outline-none transition-all" 
+                        className="w-full bg-transparent border-b-2 border-gray-100 py-3 focus:border-primary outline-none transition-all font-medium resize-none" 
                         placeholder="Tell us about your travel plans..." 
                        />
                     </div>
                     <button 
                       type="submit"
-                      className="w-full bg-primary text-white py-5 rounded-2xl font-black text-lg hover:bg-secondary transition-all shadow-xl shadow-primary/30 flex items-center justify-center space-x-3"
+                      className="inline-block px-12 py-4 bg-navy text-white font-bold text-sm uppercase tracking-widest hover:bg-primary transition-all rounded-full shadow-lg"
                     >
-                       <span>Submit Enquiry</span>
-                       <Send size={24} />
+                       Send Message
                     </button>
                  </form>
               </div>
@@ -125,13 +113,14 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Map Placeholder */}
-      <section className="bg-light-bg py-4 px-4 sm:px-6">
-         <div className="max-w-7xl mx-auto h-[400px] rounded-[40px] overflow-hidden grayscale relative border-8 border-white">
-            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
-               <div className="bg-white p-6 rounded-3xl shadow-2xl space-y-2 text-center border-4 border-primary">
-                  <MapPin className="mx-auto text-primary" size={32} />
-                  <p className="font-black text-navy">Visit Our Office</p>
+      <section className="pb-24 px-6 bg-white">
+         <div className="max-w-7xl mx-auto h-[400px] rounded-[32px] overflow-hidden grayscale relative">
+            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover" alt="Map Placeholder" />
+            <div className="absolute inset-0 bg-navy/10 flex items-center justify-center">
+               <div className="bg-white p-8 rounded-3xl shadow-xl space-y-2 text-center border border-gray-100">
+                  <MapPin className="mx-auto text-primary" size={24} />
+                  <p className="font-bold text-navy">Visit Our Office</p>
+                  <p className="text-xs text-gray-400">{SITE_CONFIG.contact.address}</p>
                </div>
             </div>
          </div>
