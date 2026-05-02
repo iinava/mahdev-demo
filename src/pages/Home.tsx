@@ -174,15 +174,14 @@ const Home: React.FC = () => {
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                {[
-                  { icon: <ShieldCheck className="text-primary" size={32} />, ...HOME_CONFIG.whyChooseUs.features[0] },
-                  { icon: <Users className="text-primary" size={32} />, ...HOME_CONFIG.whyChooseUs.features[1] },
-                  { icon: <Star className="text-primary" size={32} />, ...HOME_CONFIG.whyChooseUs.features[2] },
-                  { icon: <Clock className="text-primary" size={32} />, ...HOME_CONFIG.whyChooseUs.features[3] },
-                ].map((item, i) => (
+                {HOME_CONFIG.whyChooseUs.features.map((item, i) => (
                   <div key={i} className="flex flex-col space-y-3">
                     <div className="bg-light-bg w-16 h-16 rounded-2xl flex items-center justify-center">
-                      {item.icon}
+                      {/* Mapping dynamic icons if available or static fallback */}
+                      {i === 0 ? <ShieldCheck className="text-primary" size={32} /> : 
+                       i === 1 ? <Users className="text-primary" size={32} /> : 
+                       i === 2 ? <Star className="text-primary" size={32} /> : 
+                       <Clock className="text-primary" size={32} />}
                     </div>
                     <h3 className="text-xl font-bold text-navy">{item.title}</h3>
                     <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
