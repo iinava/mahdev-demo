@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { PACKAGES, CATEGORIES, getWhatsAppLink } from '../constants';
 import { ArrowRight, Star, ShieldCheck, Users, Clock, MessageCircle, MapPin } from 'lucide-react';
@@ -67,13 +68,13 @@ const Home: React.FC = () => {
                     <span className="text-navy font-bold text-sm">{HOME_CONFIG.hero.search.dateLabel}</span>
                   </div>
                 </div>
-                <a
-                  href="/packages.html"
+                <Link
+                  to="/packages"
                   className="w-full md:w-auto bg-navy text-white px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-primary transition-all shadow-xl active:scale-95 flex items-center justify-center space-x-2 group"
                 >
                   <span>Explore Now</span>
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -140,13 +141,13 @@ const Home: React.FC = () => {
                        <p className="text-gray-400 text-[10px] uppercase tracking-[0.2em] font-black mb-1">From</p>
                        <p className="text-3xl font-black text-primary">{pkg.price}</p>
                     </div>
-                    <a
-                      href={`/package-details.html?id=${pkg.id}`}
+                    <Link
+                      to={`/package-details?id=${pkg.id}`}
                       className="bg-navy text-white w-14 h-14 rounded-2xl flex items-center justify-center hover:bg-primary transition-all shadow-xl active:scale-95"
                       aria-label="View Details"
                     >
                       <ArrowRight size={24} />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -154,10 +155,10 @@ const Home: React.FC = () => {
           </div>
 
           <div className="mt-16 text-center">
-            <a href="/packages.html" className="inline-flex items-center space-x-2 text-primary font-bold text-lg hover:space-x-4 transition-all">
+            <Link to="/packages" className="inline-flex items-center space-x-2 text-primary font-bold text-lg hover:space-x-4 transition-all">
               <span>View All Packages</span>
               <ArrowRight size={20} />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -211,12 +212,12 @@ const Home: React.FC = () => {
               <h2 className="text-navy font-black text-4xl md:text-6xl tracking-tight leading-tight">{HOME_CONFIG.destinations.title} <br className="md:hidden" /> <span className="text-primary">{HOME_CONFIG.destinations.titleAccent}</span></h2>
               <p className="text-gray-500 text-lg md:text-xl max-w-xl font-medium">{HOME_CONFIG.destinations.description}</p>
             </div>
-            <a href="/gallery.html" className="bg-white text-navy px-10 py-4 rounded-[20px] font-black text-sm uppercase tracking-widest border border-gray-100 shadow-sm hover:border-primary hover:text-primary transition-all">Explore Gallery</a>
+            <Link to="/gallery" className="bg-white text-navy px-10 py-4 rounded-[20px] font-black text-sm uppercase tracking-widest border border-gray-100 shadow-sm hover:border-primary hover:text-primary transition-all">Explore Gallery</Link>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
             {HOME_CONFIG.destinations.list.map((city) => (
-              <a href={`/packages.html?search=${city.name}`} key={city.name} className="group relative rounded-[32px] overflow-hidden aspect-[3/4] shadow-xl">
+              <Link to={`/packages?search=${city.name}`} key={city.name} className="group relative rounded-[32px] overflow-hidden aspect-[3/4] shadow-xl">
                 <OptimizedImage 
                   src={city.img} 
                   alt={city.name} 
@@ -226,7 +227,7 @@ const Home: React.FC = () => {
                 <div className="absolute bottom-6 left-0 w-full text-center px-4 z-20">
                   <p className="text-white font-black text-xl md:text-2xl tracking-tight">{city.name}</p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

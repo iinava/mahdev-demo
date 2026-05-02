@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { PACKAGES } from '../constants';
 import { Search, Filter, Clock, ArrowRight, X } from 'lucide-react';
@@ -186,13 +187,13 @@ const Packages: React.FC = () => {
                         <p className="text-gray-400 text-[9px] uppercase tracking-widest font-bold mb-0.5">Starting At</p>
                         <p className="text-2xl font-bold text-navy">{pkg.price}</p>
                       </div>
-                      <a
-                        href={`/package-details.html?id=${pkg.id}`}
+                      <Link
+                        to={`/package-details?id=${pkg.id}`}
                         className="bg-primary text-white px-6 py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-navy transition-all shadow-lg shadow-primary/10 active:scale-95 flex items-center space-x-2"
                       >
                         <span>Details</span>
                         <ArrowRight size={14} />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

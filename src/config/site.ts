@@ -17,15 +17,15 @@ export const SITE_CONFIG = {
   },
   navigation: [
     { name: 'Home', href: '/' },
-    { name: 'Packages', href: '/packages.html' },
-    { name: 'About', href: '/about.html' },
-    { name: 'Gallery', href: '/gallery.html' },
-    { name: 'Contact', href: '/contact.html' },
+    { name: 'Packages', href: '/packages' },
+    { name: 'About', href: '/about' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Contact', href: '/contact' },
   ],
   categories: [
-    { name: 'Domestic Tours', href: '/packages.html?cat=Domestic' },
-    { name: 'International Tours', href: '/packages.html?cat=International' },
-    { name: 'Honeymoon Specials', href: '/packages.html?cat=Honeymoon' },
-    { name: 'Pilgrimage Tours', href: '/packages.html?cat=Pilgrimage' },
+    { name: 'Domestic Tours', href: '/packages?cat=Domestic' },
+    { name: 'International Tours', href: '/packages?cat=International' },
+    { name: 'Honeymoon Specials', href: '/packages?cat=Honeymoon' },
+    { name: 'Pilgrimage Tours', href: '/packages?cat=Pilgrimage' },
   ]
 };

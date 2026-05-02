@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Star, ShieldCheck, Users, Globe, Award, Heart } from 'lucide-react';
 import OptimizedImage from '../components/OptimizedImage';
@@ -113,12 +114,12 @@ const About: React.FC = () => {
           <h2 className="text-3xl font-bold text-navy leading-tight">
             Interested in planning your next trip with Jai Mahavir?
           </h2>
-          <a 
-            href="/contact.html" 
+          <Link 
+            to="/contact" 
             className="inline-block px-10 py-4 border-2 border-navy text-navy font-bold text-sm uppercase tracking-widest hover:bg-navy hover:text-white transition-all rounded-full"
           >
             Get in touch
-          </a>
+          </Link>
         </div>
       </section>
     </Layout>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Plane, Calendar, Users, Wallet, FileText, MessageCircle, ArrowRight } from 'lucide-react';
 import { getWhatsAppLink } from '../constants';
@@ -159,10 +160,10 @@ const CustomTour: React.FC = () => {
                      <Users size={24} className="text-primary" />
                      <span>Call Specialist</span>
                   </a>
-                  <a href="/about.html" className="text-white font-bold flex items-center justify-center space-x-2 hover:text-primary transition-colors">
+                  <Link to="/about" className="text-white font-bold flex items-center justify-center space-x-2 hover:text-primary transition-colors">
                      <span>About Our Process</span>
                      <ArrowRight size={20} />
-                  </a>
+                  </Link>
                </div>
             </div>
          </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Phone, MessageCircle, MapPin, Mail, Instagram, Facebook, Twitter, ArrowRight } from 'lucide-react';
 import { WHATSAPP_NUMBER, getWhatsAppLink } from '../constants';
 
@@ -28,7 +29,7 @@ const Navbar: React.FC = () => {
         <div className={`relative flex justify-between items-center transition-all duration-300 rounded-2xl will-change-transform ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.06)] py-3 px-8' : 'bg-transparent py-0 px-0'}`}>
           
           {/* Logo Section */}
-          <a href="/" className="flex items-center space-x-3 group relative z-50">
+          <Link to="/" className="flex items-center space-x-3 group relative z-50">
             <div className="bg-navy p-2 rounded-xl shadow-lg shadow-navy/20 group-hover:bg-primary transition-all duration-500 group-hover:scale-105 active:scale-95">
               <span className="text-white font-bold text-lg leading-none tracking-tighter">JM</span>
             </div>
@@ -36,18 +37,18 @@ const Navbar: React.FC = () => {
               <span className={`font-bold text-sm tracking-tight leading-none transition-colors duration-500 ${isScrolled ? 'text-navy' : 'text-navy'}`}>{SITE_CONFIG.name}</span>
               <span className="text-[6px] uppercase font-bold tracking-[0.4em] text-primary mt-1">{SITE_CONFIG.title}</span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className={`px-4 py-2 text-[10px] uppercase font-bold tracking-[0.2em] transition-all duration-300 rounded-lg ${isScrolled ? 'text-navy/60 hover:text-navy hover:bg-navy/5' : 'text-navy/60 hover:text-navy hover:bg-navy/5'}`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <div className="w-[1px] h-4 bg-gray-200 mx-4" />
             <a
@@ -109,15 +110,15 @@ const Navbar: React.FC = () => {
             <nav className="flex-grow flex flex-col justify-center space-y-6">
               {navLinks.map((link) => (
                 <div key={link.name}>
-                  <a
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="group flex items-center"
-                  >
-                    <span className="text-4xl font-bold text-white hover:text-primary transition-all duration-300 tracking-tighter uppercase">
-                      {link.name}
-                    </span>
-                  </a>
+                    <Link
+                      to={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="group flex items-center"
+                    >
+                      <span className="text-4xl font-bold text-white hover:text-primary transition-all duration-300 tracking-tighter uppercase">
+                        {link.name}
+                      </span>
+                    </Link>
                 </div>
               ))}
             </nav>
@@ -176,7 +177,7 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-lg mb-6">Quick Links</h3>
             <ul className="space-y-4 text-gray-400 text-sm">
               {SITE_CONFIG.navigation.map(link => (
-                <li key={link.name}><a href={link.href} className="hover:text-primary transition-colors">{link.name}</a></li>
+                <li key={link.name}><Link to={link.href} className="hover:text-primary transition-colors">{link.name}</Link></li>
               ))}
             </ul>
           </div>
@@ -186,7 +187,7 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-lg mb-6">Popular Categories</h3>
             <ul className="space-y-4 text-gray-400 text-sm">
               {SITE_CONFIG.categories.map(cat => (
-                <li key={cat.name}><a href={cat.href} className="hover:text-primary transition-colors">{cat.name}</a></li>
+                <li key={cat.name}><Link to={cat.href} className="hover:text-primary transition-colors">{cat.name}</Link></li>
               ))}
             </ul>
           </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { PACKAGES, getWhatsAppLink } from '../constants';
 import { Clock, MapPin, CheckCircle, XCircle, ChevronDown, ChevronUp, MessageCircle, Star, Phone } from 'lucide-react';
@@ -7,12 +8,13 @@ const PackageDetails: React.FC = () => {
   const [pkg, setPkg] = useState<any>(null);
   const [activeDay, setActiveDay] = useState<number | null>(0);
 
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
     const foundPkg = PACKAGES.find(p => p.id === id) || PACKAGES[0];
     setPkg(foundPkg);
-  }, []);
+  }, [id]);
 
   if (!pkg) return null;
 
@@ -220,7 +222,7 @@ const PackageDetails: React.FC = () => {
                 <div className="bg-gray-50 p-8 rounded-2xl text-center space-y-4 border border-gray-100">
                    <h4 className="font-bold text-navy text-sm">Need Customization?</h4>
                    <p className="text-gray-400 text-[10px] font-semibold leading-relaxed">We can tailor this package to your specific preferences and budget.</p>
-                   <a href="/custom-tour.html" className="inline-block text-primary text-xs font-bold hover:underline tracking-widest uppercase">Request Custom Tour</a>
+                   <Link to="/custom-tour" className="inline-block text-primary text-xs font-bold hover:underline tracking-widest uppercase">Request Custom Tour</Link>
                 </div>
               </div>
             </div>

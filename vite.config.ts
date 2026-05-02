@@ -16,17 +16,7 @@ export default defineConfig(({mode}) => {
       },
     },
     build: {
-      rollupOptions: {
-        input: {
-          main: path.resolve(__dirname, 'index.html'),
-          packages: path.resolve(__dirname, 'packages.html'),
-          packageDetails: path.resolve(__dirname, 'package-details.html'),
-          about: path.resolve(__dirname, 'about.html'),
-          gallery: path.resolve(__dirname, 'gallery.html'),
-          contact: path.resolve(__dirname, 'contact.html'),
-          customTour: path.resolve(__dirname, 'custom-tour.html'),
-        },
-      },
+      outDir: 'dist',
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
