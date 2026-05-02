@@ -27,8 +27,8 @@ const Home: React.FC = () => {
 
             {/* Center Typography Content */}
             <div className="col-span-1 lg:col-span-6 flex flex-col items-center text-center space-y-12 relative">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none -z-10" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-sky-400/25 rounded-full blur-[80px] pointer-events-none -z-10" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(37,99,235,0.15)_0%,transparent_70%)] pointer-events-none -z-10" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[radial-gradient(circle,rgba(56,189,248,0.2)_0%,transparent_70%)] pointer-events-none -z-10" />
               
               <div className="space-y-6">
                 <div className="inline-flex items-center space-x-3 bg-primary/5 px-6 py-2 rounded-full border border-primary/10 mx-auto">
@@ -90,8 +90,8 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10" />
-        <div className="absolute bottom-[5%] right-[5%] w-[400px] h-[400px] bg-navy/5 rounded-full blur-[100px] -z-10" />
+        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-[radial-gradient(circle,#0057D90D_0%,transparent_70%)] pointer-events-none -z-10" />
+        <div className="absolute bottom-[5%] right-[5%] w-[400px] h-[400px] bg-[radial-gradient(circle,#0A25400D_0%,transparent_70%)] pointer-events-none -z-10" />
       </section>
 
 
@@ -196,8 +196,8 @@ const Home: React.FC = () => {
                 alt="Travel Experience" 
                 className="rounded-[40px] shadow-2xl h-[600px]" 
               />
-              <div className="absolute -top-10 -right-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
-              <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute -top-10 -right-10 w-48 h-48 bg-[radial-gradient(circle,#0057D91A_0%,transparent_70%)] pointer-events-none -z-10" />
+              <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-[radial-gradient(circle,#3B82F61A_0%,transparent_70%)] pointer-events-none -z-10" />
             </div>
           </div>
         </div>
@@ -265,8 +265,8 @@ const Home: React.FC = () => {
       <section className="py-12 bg-white px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="bg-primary rounded-[40px] px-8 py-16 md:p-20 relative overflow-hidden text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(255,255,255,0.1)_0%,transparent_70%)] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[radial-gradient(circle,rgba(255,255,255,0.05)_0%,transparent_70%)] pointer-events-none" />
             
             <div className="relative z-10 space-y-6">
               <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">{HOME_CONFIG.cta.title} <br className="hidden md:block" /> {HOME_CONFIG.cta.titleLine2}</h2>

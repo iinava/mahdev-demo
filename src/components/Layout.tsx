@@ -23,9 +23,9 @@ const Navbar: React.FC = () => {
   const navLinks = SITE_CONFIG.navigation;
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${isScrolled ? 'py-4' : 'py-8'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ease-out will-change-transform ${isScrolled ? 'py-4' : 'py-8'}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`relative flex justify-between items-center transition-all duration-500 rounded-2xl ${isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.06)] py-3 px-8' : 'bg-transparent py-0 px-0'}`}>
+        <div className={`relative flex justify-between items-center transition-all duration-300 rounded-2xl will-change-transform ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.06)] py-3 px-8' : 'bg-transparent py-0 px-0'}`}>
           
           {/* Logo Section */}
           <a href="/" className="flex items-center space-x-3 group relative z-50">

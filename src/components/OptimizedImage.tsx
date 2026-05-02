@@ -32,7 +32,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         alt={alt}
         loading="lazy"
         onLoad={() => setIsLoaded(true)}
-        className={`w-full h-full object-cover relative z-10 transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+        decoding="async"
+        className={`w-full h-full object-cover relative z-10 transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'} will-change-opacity`}
         {...props}
       />
     </div>

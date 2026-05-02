@@ -53,7 +53,7 @@ const Packages: React.FC = () => {
       </section>
 
       {/* FILTER BAR */}
-      <section className="sticky top-[68px] z-40 bg-white/80 backdrop-blur-xl border-y border-gray-100 py-4 shadow-sm">
+      <section className="sticky top-[68px] z-40 bg-white/80 backdrop-blur-md border-y border-gray-100 py-4 shadow-sm">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4">
             {/* Search Input - Expands on desktop */}
