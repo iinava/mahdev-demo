@@ -1,9 +1,9 @@
 export const HOME_CONFIG = {
   hero: {
-    badge: 'Explore the World with Pride',
+    badge: 'No 1 Travel agency in Town',
     title: {
-      line1: "It's time",
-      line2: 'to travel',
+      line1: "Let's Make Your",
+      line2: '   Best Trip  ',
       line3: 'Jai Mahavir'
     },
     description: 'Bespoke journeys curated for the modern world explorer. Create the route you want to travel with our signature concierge.',
