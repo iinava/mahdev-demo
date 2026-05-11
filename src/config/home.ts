@@ -4,7 +4,7 @@ export const HOME_CONFIG = {
     title: {
       line1: "Let's Make Your",
       line2: '   Best Trip  ',
-      line3: 'Jai Mahavir'
+      line3: 'Mahadev Travels'
     },
     description: 'Bespoke journeys curated for the modern world explorer. Create the route you want to travel with our signature concierge.',
     illustrations: {
@@ -46,7 +46,7 @@ export const HOME_CONFIG = {
     titleAccent: 'Travelers Say',
     list: [
       { name: "Rahul Sharma", role: "Corporate Traveler", text: "The Dubai trip was flawless. Every detail was handled perfectly, from airport transfers to the Burj Khalifa visit. Highly recommended!", rating: 5 },
-      { name: "Anita Desai", role: "Family Vacation", text: "We took our parents to Kerala with JAI Mahavir. The houseboat experience was magical. Thank you for making it so comfortable for seniors.", rating: 5 },
+      { name: "Anita Desai", role: "Family Vacation", text: "We took our parents to Kerala with Mahadev Travels. The houseboat experience was magical. Thank you for making it so comfortable for seniors.", rating: 5 },
       { name: "Vikram Gill", role: "Solo Adventure", text: "Bali was a dream come true. The private guides provided by the agency were professional and very knowledgeable. Great value for money.", rating: 5 },
     ]
   },

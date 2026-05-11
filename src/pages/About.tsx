@@ -112,7 +112,7 @@ const About: React.FC = () => {
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-3xl mx-auto px-6 text-center space-y-10">
           <h2 className="text-3xl font-bold text-navy leading-tight">
-            Interested in planning your next trip with Jai Mahavir?
+            Interested in planning your next trip with Mahadev Travels?
           </h2>
           <Link 
             to="/contact" 
