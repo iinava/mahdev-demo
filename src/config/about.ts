@@ -37,8 +37,8 @@ export const ABOUT_CONFIG = {
     ]
   },
   founders: {
-    title: 'Meet The',
-    titleAccent: 'Founders',
+    title: 'Meet',
+    titleAccent: 'Our Team',
     list: [
       {
         name: 'Rahul Desai',

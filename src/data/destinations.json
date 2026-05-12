@@ -1,0 +1,121 @@
+[
+  {
+    "id": "munnar",
+    "destination": "Munnar",
+    "title": "Munnar Tea Gardens Retreat",
+    "category": "Domestic",
+    "duration": "4 Days / 3 Nights",
+    "image": "/packages/moonar.jpg",
+    "description": "Escape to the lush green hills of Munnar. Surrounded by endless tea plantations and misty mountains, experience nature like never before.",
+    "attractions": [
+      "Mattupetty Dam",
+      "Echo Point",
+      "Kundala Lake",
+      "Tea Museum",
+      "Top Station",
+      "Eravikulam National Park"
+    ]
+  },
+  {
+    "id": "wayanad",
+    "destination": "Wayanad",
+    "title": "Wayanad Wildlife & Nature",
+    "category": "Family",
+    "duration": "4 Days / 3 Nights",
+    "image": "/packages/wayanad.jpg",
+    "description": "Discover the pristine beauty of Wayanad. From ancient caves to magnificent waterfalls, this is a perfect getaway for families and nature lovers.",
+    "attractions": [
+      "Edakkal Caves",
+      "Banasura Sagar Dam",
+      "Soochipara Falls",
+      "Pookode Lake",
+      "Chembra Peak",
+      "Kuruvadweep"
+    ]
+  },
+  {
+    "id": "ooty",
+    "destination": "Ooty",
+    "title": "Ooty Queen of Hill Stations",
+    "category": "Domestic",
+    "duration": "3 Days / 2 Nights",
+    "image": "/packages/ooty.jpg",
+    "description": "Step into the charm of Ooty. Enjoy peaceful boat rides, expansive botanical gardens, and the breathtaking views from Doddabetta peak.",
+    "attractions": [
+      "Botanical Garden",
+      "Ooty Lake",
+      "Doddabetta Peak",
+      "Tea Factory",
+      "Rose Garden",
+      "Pykara Falls"
+    ]
+  },
+  {
+    "id": "kodaikanal",
+    "destination": "Kodaikanal",
+    "title": "Kodaikanal Serene Escapade",
+    "category": "Honeymoon",
+    "duration": "4 Days / 3 Nights",
+    "image": "/packages/kodaikanal.jpg",
+    "description": "Experience the tranquility of Kodaikanal. Walk among pine forests, gaze at the pillar rocks, and enjoy a romantic getaway by the lake.",
+    "attractions": [
+      "Kodai Lake",
+      "Coaker’s Walk",
+      "Pine Forest",
+      "Pillar Rocks",
+      "Guna Caves",
+      "Silver Cascade Falls"
+    ]
+  },
+  {
+    "id": "chikkamagaluru",
+    "destination": "Chikkamagaluru",
+    "title": "Chikkamagaluru Coffee Trails",
+    "category": "Group",
+    "duration": "3 Days / 2 Nights",
+    "image": "/packages/chikmagalur3.webp",
+    "description": "Dive into the coffee capital of Karnataka. Trek up Mullayanagiri, wander through vast estates, and witness the majestic Hebbe Falls.",
+    "attractions": [
+      "Mullayanagiri",
+      "Baba Budangiri",
+      "Jhari Falls",
+      "Coffee Plantations",
+      "Hebbe Falls",
+      "Hirekolale Lake"
+    ]
+  },
+  {
+    "id": "goa",
+    "destination": "Goa",
+    "title": "Goa Beaches & Heritage",
+    "category": "Group",
+    "duration": "5 Days / 4 Nights",
+    "image": "/packages/goa.png",
+    "description": "Sun, sand, and historic churches. Explore the vibrant beaches of North Goa, taste incredible seafood, and visit ancient basilicas.",
+    "attractions": [
+      "Baga Beach",
+      "Calangute Beach",
+      "Fort Aguada",
+      "Dudhsagar Falls",
+      "Anjuna Beach",
+      "Basilica of Bom Jesus"
+    ]
+  },
+  {
+    "id": "varanasi",
+    "destination": "Varanasi",
+    "title": "Varanasi Spiritual Journey",
+    "category": "Pilgrimage",
+    "duration": "4 Days / 3 Nights",
+    "image": "/packages/varanasi.jpg",
+    "description": "Embark on a soulful pilgrimage to one of the oldest living cities. Witness the mesmerizing Ganga Aarti and seek blessings at Kashi Vishwanath.",
+    "attractions": [
+      "Kashi Vishwanath Temple",
+      "Dashashwamedh Ghat",
+      "Ganga Aarti",
+      "Sarnath",
+      "Assi Ghat",
+      "Banaras Hindu University"
+    ]
+  }
+]

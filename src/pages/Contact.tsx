@@ -1,8 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import { Mail, Phone, MapPin, Send, MessageCircle, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Clock } from 'lucide-react';
 import { getWhatsAppLink } from '../constants';
-
 import { SITE_CONFIG } from '../config/site';
 
 const Contact: React.FC = () => {
@@ -16,114 +15,159 @@ const Contact: React.FC = () => {
 
   return (
     <Layout>
-      <section className="bg-white pt-40 pb-20">
-        <div className="max-w-5xl mx-auto px-6 text-center space-y-6">
-           <h1 className="text-4xl md:text-6xl font-bold text-navy tracking-tight">Let's <span className="text-primary italic font-serif">Connect</span></h1>
-           <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">Have a question or ready to plan your trip? Reach out to us and we'll get back to you sooner than you think.</p>
+      {/* FUN HEADER – matching Gallery style */}
+      <section className="bg-gradient-to-b from-[#FFF5F8] to-white pt-28 pb-10 text-center relative overflow-hidden min-h-[40vh] flex flex-col justify-center">
+        {/* Playful blobs */}
+        <div className="absolute top-0 right-1/4 w-64 h-64 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
+        <div className="absolute top-10 left-1/4 w-64 h-64 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-0 right-1/3 w-48 h-48 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '4s' }} />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-5 mt-8">
+          <div className="inline-block bg-white px-5 py-1.5 rounded-full shadow-md transform -rotate-2 hover:rotate-0 transition-transform">
+            <p className="text-[10px] md:text-xs font-black uppercase tracking-widest text-primary flex items-center gap-2">
+              <span>💬</span> Get In Touch
+            </p>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black text-navy leading-[1.05] tracking-tighter">
+            Let's{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-400 to-yellow-500 relative inline-block">
+              Connect!
+              <svg className="absolute -bottom-2 left-0 w-full h-3 text-pink-400" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+              </svg>
+            </span>
+          </h1>
+          <p className="text-gray-500 text-base md:text-lg max-w-xl mx-auto font-bold leading-relaxed pt-2">
+            Have a question or ready to plan your trip? We'd love to hear from you!
+          </p>
         </div>
       </section>
 
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
-              {/* Contact Info */}
-              <div className="space-y-16">
-                 <div className="space-y-6">
-                    <h2 className="text-2xl font-bold text-navy uppercase tracking-tight">Corporate Office</h2>
-                    <p className="text-gray-500 max-w-md leading-relaxed">Visit our experience center to discuss your travel plans in person.</p>
-                 </div>
-
-                 <div className="space-y-10">
-                    {[
-                       { icon: <MapPin className="text-primary" size={20} />, title: "Address", content: SITE_CONFIG.contact.address },
-                       { icon: <Phone className="text-primary" size={20} />, title: "Call Us", content: SITE_CONFIG.contact.phone },
-                       { icon: <Mail className="text-primary" size={20} />, title: "Email", content: SITE_CONFIG.contact.email },
-                       { icon: <Clock className="text-primary" size={20} />, title: "Timing", content: SITE_CONFIG.contact.timing },
-                    ].map((item, i) => (
-                       <div key={i} className="flex items-start space-x-6">
-                          <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center flex-shrink-0">
-                             {item.icon}
-                          </div>
-                          <div>
-                             <h4 className="font-bold text-navy text-[10px] uppercase tracking-widest text-primary">{item.title}</h4>
-                             <p className="text-lg font-medium text-navy mt-1">{item.content}</p>
-                          </div>
-                       </div>
-                    ))}
-                 </div>
-              </div>
-
-
-              {/* Form */}
-              <div className="space-y-10">
-                 <h2 className="text-2xl font-bold text-navy uppercase tracking-tight">Quick Enquiry</h2>
-                 <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                       <div className="space-y-2">
-                          <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Full Name</label>
-                          <input 
-                            name="name"
-                            required
-                            type="text" 
-                            className="w-full bg-transparent border-b-2 border-gray-100 py-3 focus:border-primary outline-none transition-all font-medium" 
-                            placeholder="John Doe" 
-                          />
-                       </div>
-                       <div className="space-y-2">
-                          <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Email Address</label>
-                          <input 
-                            name="email"
-                            required
-                            type="email" 
-                            className="w-full bg-transparent border-b-2 border-gray-100 py-3 focus:border-primary outline-none transition-all font-medium" 
-                            placeholder="john@example.com" 
-                          />
-                       </div>
-                    </div>
-                    <div className="space-y-2">
-                       <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Subject</label>
-                       <input 
-                         name="subject"
-                         required
-                         type="text" 
-                         className="w-full bg-transparent border-b-2 border-gray-100 py-3 focus:border-primary outline-none transition-all font-medium" 
-                         placeholder="Enquiry for Dubai Tour" 
-                       />
-                    </div>
-                    <div className="space-y-2">
-                       <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Message</label>
-                       <textarea 
-                        name="message"
-                        required
-                        rows={4} 
-                        className="w-full bg-transparent border-b-2 border-gray-100 py-3 focus:border-primary outline-none transition-all font-medium resize-none" 
-                        placeholder="Tell us about your travel plans..." 
-                       />
-                    </div>
-                    <button 
-                      type="submit"
-                      className="inline-block px-12 py-4 bg-navy text-white font-bold text-sm uppercase tracking-widest hover:bg-primary transition-all rounded-full shadow-lg"
-                    >
-                       Send Message
-                    </button>
-                 </form>
-              </div>
-           </div>
+      {/* QUICK CONTACT CARDS */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { emoji: '📍', title: 'Address', content: SITE_CONFIG.contact.address, icon: <MapPin size={18} /> },
+              { emoji: '📞', title: 'Call Us', content: SITE_CONFIG.contact.phone, icon: <Phone size={18} /> },
+              { emoji: '✉️', title: 'Email', content: SITE_CONFIG.contact.email, icon: <Mail size={18} /> },
+              { emoji: '🕐', title: 'Hours', content: SITE_CONFIG.contact.timing, icon: <Clock size={18} /> },
+            ].map((item, i) => {
+              const rotations = ['rotate-1', '-rotate-1', 'rotate-1', '-rotate-1'];
+              return (
+                <div
+                  key={i}
+                  className={`bg-[#F9FBFF] p-6 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform ${rotations[i]} hover:rotate-0 hover:scale-105 space-y-3`}
+                >
+                  <span className="text-3xl block">{item.emoji}</span>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-primary">{item.title}</p>
+                  <p className="text-sm font-bold text-navy leading-relaxed">{item.content}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* Map Placeholder */}
-      <section className="pb-24 px-6 bg-white">
-         <div className="max-w-7xl mx-auto h-[400px] rounded-[32px] overflow-hidden grayscale relative">
-            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover" alt="Map Placeholder" />
-            <div className="absolute inset-0 bg-navy/10 flex items-center justify-center">
-               <div className="bg-white p-8 rounded-3xl shadow-xl space-y-2 text-center border border-gray-100">
-                  <MapPin className="mx-auto text-primary" size={24} />
-                  <p className="font-bold text-navy">Visit Our Office</p>
-                  <p className="text-xs text-gray-400">{SITE_CONFIG.contact.address}</p>
-               </div>
+      {/* MAIN CONTENT - FORM + WHATSAPP */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+            {/* Contact Form */}
+            <div className="bg-[#F9FBFF] p-8 md:p-12 rounded-[3rem] border border-gray-100 shadow-sm space-y-8">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-black text-navy flex items-center gap-3">
+                  <span className="text-4xl">📝</span> Quick Enquiry
+                </h2>
+                <p className="text-gray-500 font-bold text-sm">Fill in the form and we'll respond within the day!</p>
+              </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-primary">Full Name</label>
+                    <input
+                      name="name"
+                      required
+                      type="text"
+                      className="w-full bg-white border-2 border-gray-100 rounded-2xl py-4 px-5 focus:border-primary outline-none transition-all font-bold shadow-sm"
+                      placeholder="Your Name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-primary">Email</label>
+                    <input
+                      name="email"
+                      required
+                      type="email"
+                      className="w-full bg-white border-2 border-gray-100 rounded-2xl py-4 px-5 focus:border-primary outline-none transition-all font-bold shadow-sm"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-primary">Subject</label>
+                  <input
+                    name="subject"
+                    required
+                    type="text"
+                    className="w-full bg-white border-2 border-gray-100 rounded-2xl py-4 px-5 focus:border-primary outline-none transition-all font-bold shadow-sm"
+                    placeholder="Enquiry for Goa Package"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-primary">Message</label>
+                  <textarea
+                    name="message"
+                    required
+                    rows={4}
+                    className="w-full bg-white border-2 border-gray-100 rounded-2xl py-4 px-5 focus:border-primary outline-none transition-all font-bold shadow-sm resize-none"
+                    placeholder="Tell us about your dream trip..."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-navy text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-primary transition-all shadow-xl active:scale-95"
+                >
+                  Send via WhatsApp 🚀
+                </button>
+              </form>
             </div>
-         </div>
+
+            {/* WhatsApp + Info */}
+            <div className="space-y-6 flex flex-col">
+              {/* WhatsApp CTA */}
+              <div className="bg-navy p-10 rounded-[3rem] space-y-6 transform rotate-1 hover:rotate-0 transition-transform duration-500 flex-1">
+                <span className="text-5xl block">💬</span>
+                <h3 className="text-3xl font-black text-white">Prefer to Chat?</h3>
+                <p className="text-white/60 font-bold leading-relaxed">
+                  Skip the form! Drop us a message on WhatsApp and get a response instantly from our travel team.
+                </p>
+                <a
+                  href={getWhatsAppLink(`Hello ${SITE_CONFIG.name}, I would like to plan a trip!`)}
+                  className="inline-flex items-center space-x-3 bg-primary text-white px-8 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white hover:text-navy transition-all shadow-xl active:scale-95"
+                >
+                  <MessageCircle size={22} />
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
+
+              {/* Call card */}
+              <div className="bg-yellow-100 p-8 rounded-[2.5rem] space-y-4 transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+                <span className="text-4xl block">📞</span>
+                <h3 className="text-2xl font-black text-navy">Give us a Call!</h3>
+                <p className="text-navy/60 font-bold text-sm">Prefer speaking directly? Our team is just a phone call away.</p>
+                <a
+                  href={`tel:${SITE_CONFIG.contact.phone.replace(/\s+/g, '')}`}
+                  className="inline-flex items-center space-x-3 bg-navy text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-primary transition-all shadow-xl active:scale-95"
+                >
+                  <Phone size={18} />
+                  <span>{SITE_CONFIG.contact.phone}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </Layout>
   );

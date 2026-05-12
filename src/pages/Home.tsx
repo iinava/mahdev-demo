@@ -11,88 +11,142 @@ const Home: React.FC = () => {
   return (
     <Layout>
       {/* MODERN CENTERED HERO SECTION WITH FLANKING ILLUSTRATIONS */}
-      <section className="relative min-h-[95vh] flex items-center bg-white overflow-hidden pt-32 pb-20">
+      {/* MODERN REVAMPED HERO SECTION */}
+      <section className="relative min-h-[95vh] flex items-center bg-white overflow-hidden pt-28 pb-20">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none -z-10" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-300/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none -z-10" />
+        
+        {/* Decorative Road Background */}
+        <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] md:w-[150%] pointer-events-none -z-20 opacity-[0.04]">
+          {/* Asphalt Base */}
+          <path d="M 50 400 Q 75 180 250 400 Q 498 681 550 400 Q 651 0 750 400" fill="none" stroke="#0F172A" strokeWidth="48" strokeLinecap="round" />
+          {/* Center Yellow Dashed Line */}
+          <path d="M 50 400 Q 75 180 250 400 Q 498 681 550 400 Q 651 0 750 400" fill="none" stroke="#FBBF24" strokeWidth="6" strokeDasharray="24 24" strokeLinecap="round" />
+        </svg>
+
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            {/* Left Illustration */}
-            {/* Left Illustration */}
-            <div className="hidden lg:flex lg:col-span-3 justify-center">
-              <img 
-                src={HOME_CONFIG.hero.illustrations.left} 
-                alt="Travel Illustration Left" 
-                className="w-full h-auto"
-                loading="eager"
-              />
-            </div>
-
-            {/* Center Typography Content */}
-            <div className="col-span-1 lg:col-span-6 flex flex-col items-center text-center space-y-12 relative">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(37,99,235,0.15)_0%,transparent_70%)] pointer-events-none -z-10" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[radial-gradient(circle,rgba(56,189,248,0.2)_0%,transparent_70%)] pointer-events-none -z-10" />
+            {/* Left Typography Content */}
+            <div className="flex flex-col items-start text-left space-y-10 relative">
+              {/* Radial Blur Behind Typography */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-[radial-gradient(circle,rgba(37,99,235,0.08)_0%,transparent_70%)] pointer-events-none -z-10" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-[radial-gradient(circle,rgba(56,189,248,0.12)_0%,transparent_70%)] pointer-events-none -z-10" />
               
-              <div className="space-y-6">
-                <div className="inline-flex items-center space-x-3 bg-primary/5 px-6 py-2 rounded-full border border-primary/10 mx-auto">
-                  <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">{HOME_CONFIG.hero.badge}</span>
-                </div>
-
-                <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-navy leading-[1.05] tracking-tight">
-                  {HOME_CONFIG.hero.title.line1} <br />
-                  {HOME_CONFIG.hero.title.line2} <span className="text-primary relative inline-block">
-                    with
-                    <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary/20" viewBox="0 0 100 10" preserveAspectRatio="none">
-                      <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="2" />
-                    </svg>
-                  </span> <br />
-                  {HOME_CONFIG.hero.title.line3}
-                </h1>
-
-                <p className="text-gray-400 text-lg md:text-xl max-w-lg mx-auto font-medium leading-relaxed">
-                  {HOME_CONFIG.hero.description}
-                </p>
+              <div className="inline-flex items-center space-x-3 bg-white px-6 py-2 rounded-full border border-gray-100 shadow-sm">
+                <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-navy">{HOME_CONFIG.hero.badge}</span>
               </div>
 
-              <div className="w-full max-w-2xl bg-white p-3 rounded-[32px] shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col md:flex-row items-center gap-2">
-                <div className="flex-1 px-6 py-2 border-b md:border-b-0 md:border-r border-gray-100 w-full text-left">
+              <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-black text-navy leading-[1.05] tracking-tight">
+                {HOME_CONFIG.hero.title.line1} <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400 relative inline-block">
+                  {HOME_CONFIG.hero.title.line2}
+                  <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                    <path d="M0 5 Q 25 0, 50 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="3" />
+                  </svg>
+                </span> <br />
+                {HOME_CONFIG.hero.title.line3}
+              </h1>
+
+              <p className="text-gray-500 text-lg md:text-xl max-w-lg font-medium leading-relaxed">
+                {HOME_CONFIG.hero.description}
+              </p>
+
+              {/* Action Area */}
+              <div className="w-full max-w-xl bg-white p-3 rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-gray-100 flex flex-col sm:flex-row items-center gap-2">
+                <div className="flex-1 px-5 py-2 w-full text-left">
                   <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Destination</p>
-                  <div className="flex items-center space-x-2">
-                    <MapPin size={14} className="text-primary" />
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                      <MapPin size={14} className="text-primary" />
+                    </div>
                     <span className="text-navy font-bold text-sm">{HOME_CONFIG.hero.search.destination}</span>
                   </div>
                 </div>
-                <div className="flex-1 px-6 py-2 w-full text-left">
+                <div className="hidden sm:block w-px h-10 bg-gray-100"></div>
+                <div className="flex-1 px-5 py-2 w-full text-left">
                   <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Travel Date</p>
-                  <div className="flex items-center space-x-2">
-                    <Clock size={14} className="text-primary" />
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Clock size={14} className="text-primary" />
+                    </div>
                     <span className="text-navy font-bold text-sm">{HOME_CONFIG.hero.search.dateLabel}</span>
                   </div>
                 </div>
                 <Link
                   to="/packages"
-                  className="w-full md:w-auto bg-navy text-white px-10 py-5 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-primary transition-all shadow-xl active:scale-95 flex items-center justify-center space-x-2 group"
+                  className="w-full sm:w-auto bg-navy text-white px-8 py-5 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-primary transition-all shadow-xl active:scale-95 flex items-center justify-center space-x-2 group"
                 >
-                  <span>Explore Now</span>
+                  <span>Explore</span>
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
+
+              {/* Trust Indicators */}
+              <div className="flex items-center space-x-6 pt-4">
+                <div className="flex -space-x-3">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="w-12 h-12 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
+                      <img src={`https://i.pravatar.cc/100?img=${i+40}`} alt="User" className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                  <div className="w-12 h-12 rounded-full border-2 border-white bg-primary text-white flex items-center justify-center text-xs font-bold shadow-sm">
+                    +10k
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-navy font-bold text-sm block">Happy Travelers</span>
+                  <div className="flex text-yellow-400 mt-1">
+                    {[1, 2, 3, 4, 5].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Right Illustration */}
-            {/* Right Illustration */}
-            <div className="hidden lg:flex lg:col-span-3 justify-center">
-              <img 
-                src={HOME_CONFIG.hero.illustrations.right} 
-                alt="Travel Illustration Right" 
-                className="w-full h-auto"
-                loading="eager"
-              />
+            {/* Right Visual Collage */}
+            <div className="relative h-[600px] hidden lg:block">
+              {/* Main Illustration Card */}
+              <div className="absolute right-0 top-0 w-[85%] h-[80%] rounded-[3rem] overflow-hidden shadow-2xl hover:scale-[1.02] transition-transform duration-700 z-10 group bg-[#F8FAFC]">
+                <img 
+                  src="/hero/illustration mahadeva.png" 
+                  alt="Mahadeva Travel Hub" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
+                />
+              </div>
+
+              {/* Overlapping Small Image 1 */}
+              <div className="absolute left-0 bottom-10 w-[55%] h-[45%] rounded-[2.5rem] border-8 border-white overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.15)] hover:scale-[1.05] transition-transform duration-700 z-20 group">
+                <img 
+                  src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&q=80&w=800" 
+                  alt="Kerala Houseboats" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent"></div>
+                <div className="absolute bottom-5 left-5 text-white">
+                  <div className="flex items-center space-x-2 mb-1">
+                    <MapPin size={10} className="text-primary" />
+                    <span className="text-[9px] font-bold uppercase tracking-wider">Alleppey</span>
+                  </div>
+                  <p className="text-sm font-bold">Premium Houseboats</p>
+                </div>
+              </div>
+
+              {/* Floating Element */}
+              <div className="absolute top-[15%] -left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center space-x-4 animate-bounce z-30 border border-gray-100">
+                <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center">
+                  <ShieldCheck size={24} className="text-green-500" />
+                </div>
+                <div>
+                  <p className="text-[9px] text-gray-400 font-bold uppercase tracking-wider">Verified</p>
+                  <p className="text-navy font-bold text-sm">Safe Travels</p>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
-
-        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-[radial-gradient(circle,#0057D90D_0%,transparent_70%)] pointer-events-none -z-10" />
-        <div className="absolute bottom-[5%] right-[5%] w-[400px] h-[400px] bg-[radial-gradient(circle,#0A25400D_0%,transparent_70%)] pointer-events-none -z-10" />
       </section>
 
 
@@ -136,11 +190,7 @@ const Home: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="pt-8 flex items-center justify-between border-t border-gray-50">
-                    <div>
-                       <p className="text-gray-400 text-[10px] uppercase tracking-[0.2em] font-black mb-1">From</p>
-                       <p className="text-3xl font-black text-primary">{pkg.price}</p>
-                    </div>
+                  <div className="pt-8 flex justify-end border-t border-gray-50">
                     <Link
                       to={`/package-details?id=${pkg.id}`}
                       className="bg-navy text-white w-14 h-14 rounded-2xl flex items-center justify-center hover:bg-primary transition-all shadow-xl active:scale-95"

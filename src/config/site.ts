@@ -1,13 +1,13 @@
 export const SITE_CONFIG = {
-  name: 'MAHADEV TRAVELS',
+  name: 'MAHADEVA TRAVEL HUB',
   title: 'Signature',
   tagline: 'Tours & Travels',
-  description: 'Crafting unforgettable travel experiences for our premium clients. From domestic wonders to international gems, we handle it all with care.',
+  description: 'Crafting unforgettable travel experiences for our premium clients. From serene hill stations to vibrant beaches, we handle it all with care.',
   contact: {
     address: '123 Travel Plaza, Luxury Sector, Mumbai, India',
-    phone: '+91 98765 43210',
-    email: 'contact@mahadevtravels.com',
-    whatsapp: '919876543210',
+    phone: '+91 89434 91937',
+    email: 'contact@mahadevatravelhub.com',
+    whatsapp: '918943491937',
     timing: 'Mon - Sat: 10:00 AM - 7:00 PM'
   },
   social: {
@@ -24,7 +24,7 @@ export const SITE_CONFIG = {
   ],
   categories: [
     { name: 'Domestic Tours', href: '/packages?cat=Domestic' },
-    { name: 'International Tours', href: '/packages?cat=International' },
+    { name: 'Family Escapes', href: '/packages?cat=Family' },
     { name: 'Honeymoon Specials', href: '/packages?cat=Honeymoon' },
     { name: 'Pilgrimage Tours', href: '/packages?cat=Pilgrimage' },
   ]

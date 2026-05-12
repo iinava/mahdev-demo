@@ -36,7 +36,7 @@ const CustomTour: React.FC = () => {
                     "Hand-picked accommodations based on your style",
                     "Custom day-wise detailed itineraries",
                     "Dedicated travel specialists for planning",
-                    "24/7 on-trip concierge assistance"
+                    "24/7 on-trip support assistance"
                  ].map((t, i) => (
                     <div key={i} className="flex items-center space-x-3">
                        <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center text-primary">

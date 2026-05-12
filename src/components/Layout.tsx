@@ -7,9 +7,10 @@ import { SITE_CONFIG } from '../config/site';
 
 interface LayoutProps {
   children: React.ReactNode;
+  transparentNavTheme?: 'light' | 'dark';
 }
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<{ theme?: 'light' | 'dark' }> = ({ theme = 'light' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -25,18 +26,18 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ease-out will-change-transform ${isScrolled ? 'py-4' : 'py-8'}`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className={`relative flex justify-between items-center transition-all duration-300 rounded-2xl will-change-transform ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.06)] py-3 px-8' : 'bg-transparent py-0 px-0'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ease-out will-change-transform ${isScrolled ? 'py-3 md:py-4' : 'py-5 md:py-8'}`}>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className={`relative flex justify-between items-center transition-all duration-300 rounded-2xl will-change-transform ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.06)] py-3 px-5 md:px-8' : 'bg-transparent py-0 px-0'}`}>
             
             {/* Logo Section */}
-            <Link to="/" className="flex items-center space-x-3 group relative z-50">
-              <div className="bg-navy p-2 rounded-xl shadow-lg shadow-navy/20 group-hover:bg-primary transition-all duration-500 group-hover:scale-105 active:scale-95">
-                <span className="text-white font-bold text-lg leading-none tracking-tighter">JM</span>
-              </div>
-              <div className="flex flex-col">
-                <span className={`font-bold text-sm tracking-tight leading-none transition-colors duration-500 ${isScrolled ? 'text-navy' : 'text-navy'}`}>{SITE_CONFIG.name}</span>
-                <span className="text-[6px] uppercase font-bold tracking-[0.4em] text-primary mt-1">{SITE_CONFIG.title}</span>
+            <Link to="/" className="group relative z-50">
+              <div className="h-8 sm:h-10 w-auto group-hover:scale-105 active:scale-95 transition-all duration-500 flex items-center">
+                <img 
+                  src="/mahadev logo 2.png" 
+                  alt="Mahadeva Travel Hub" 
+                  className="h-full w-auto object-contain" 
+                />
               </div>
             </Link>
 
@@ -46,18 +47,22 @@ const Navbar: React.FC = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`px-4 py-2 text-[10px] uppercase font-bold tracking-[0.2em] transition-all duration-300 rounded-lg ${isScrolled ? 'text-navy/60 hover:text-navy hover:bg-navy/5' : 'text-navy/60 hover:text-navy hover:bg-navy/5'}`}
+                  className={`px-4 py-2 text-[10px] uppercase font-bold tracking-[0.2em] transition-all duration-300 rounded-lg ${isScrolled ? 'text-navy/60 hover:text-navy hover:bg-navy/5' : (theme === 'dark' ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-navy/60 hover:text-navy hover:bg-navy/5')}`}
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="w-[1px] h-4 bg-gray-200 mx-4" />
+              <div className={`w-[1px] h-4 mx-4 ${isScrolled ? 'bg-gray-200' : (theme === 'dark' ? 'bg-white/20' : 'bg-gray-200')}`} />
               <a
                 href={getWhatsAppLink(`Hello ${SITE_CONFIG.name}, I would like to enquire.`)}
-                className="bg-navy text-white px-6 py-2.5 rounded-xl font-bold text-[9px] uppercase tracking-widest hover:bg-primary transition-all shadow-lg shadow-navy/10 flex items-center space-x-2 active:scale-95 ml-4"
+                className={`px-6 py-2.5 rounded-xl font-bold text-[9px] uppercase tracking-widest transition-all shadow-lg flex items-center space-x-2 active:scale-95 ml-4 ${
+                  isScrolled 
+                    ? 'bg-navy text-white hover:bg-primary shadow-navy/10' 
+                    : (theme === 'dark' ? 'bg-white text-navy hover:bg-primary hover:text-white shadow-black/10' : 'bg-navy text-white hover:bg-primary shadow-navy/10')
+                }`}
               >
                 <MessageCircle size={14} className="text-primary" />
-                <span>Concierge</span>
+                <span>Support</span>
               </a>
             </div>
 
@@ -65,13 +70,17 @@ const Navbar: React.FC = () => {
             <div className="lg:hidden flex items-center space-x-3 relative z-50">
               <a 
                 href={`tel:${SITE_CONFIG.contact.phone.replace(/\s+/g, '')}`} 
-                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${isScrolled ? 'bg-navy/5 text-navy' : 'bg-white/10 text-navy backdrop-blur-md shadow-sm border border-navy/5'}`}
+                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${isScrolled ? 'bg-navy/5 text-navy' : (theme === 'dark' ? 'bg-white/10 text-white backdrop-blur-md shadow-sm border border-white/10' : 'bg-white/10 text-navy backdrop-blur-md shadow-sm border border-navy/5')}`}
               >
                 <Phone size={16} />
               </a>
               <button 
                 onClick={() => setIsOpen(!isOpen)} 
-                className={`w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-xl transition-all duration-500 ${isOpen ? 'bg-navy text-white' : isScrolled ? 'bg-navy text-white shadow-lg' : 'bg-white shadow-lg text-navy border border-gray-100'}`}
+                className={`w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-xl transition-all duration-500 ${
+                  isOpen ? 'bg-navy text-white' : 
+                  isScrolled ? 'bg-navy text-white shadow-lg' : 
+                  (theme === 'dark' ? 'bg-white/10 text-white backdrop-blur-md border border-white/10 shadow-lg' : 'bg-white shadow-lg text-navy border border-gray-100')
+                }`}
                 aria-label="Toggle menu"
               >
                 <span className={`h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
@@ -98,14 +107,8 @@ const Navbar: React.FC = () => {
           
           {/* Menu Header */}
           <div className="flex justify-between items-center mb-16">
-            <div className="flex items-center space-x-3">
-              <div className="bg-primary p-2 rounded-xl">
-                <span className="text-white font-bold text-lg leading-none tracking-tighter">JM</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-sm tracking-tight leading-none text-white">{SITE_CONFIG.name}</span>
-                <span className="text-[6px] uppercase font-bold tracking-[0.4em] text-primary mt-1">{SITE_CONFIG.title}</span>
-              </div>
+            <div className="h-10 w-auto flex items-center">
+              <img src="/mahadev logo 2.png" alt="Mahadeva Travel Hub" className="h-full w-auto object-contain" />
             </div>
             <button 
               onClick={() => setIsOpen(false)}
@@ -142,7 +145,7 @@ const Navbar: React.FC = () => {
               <p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Connect with us</p>
               <a href={getWhatsAppLink(`Hello ${SITE_CONFIG.name}`)} className="text-lg font-bold text-white flex items-center space-x-3 active:scale-95 transition-transform">
                 <MessageCircle size={18} className="text-primary" />
-                <span>WhatsApp Concierge</span>
+                <span>Chat with Us</span>
               </a>
             </div>
           </div>
@@ -156,73 +159,54 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-navy text-white pt-16 pb-24 md:pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <div className="bg-primary p-2 rounded-lg">
-                <span className="text-white font-bold text-xl leading-none">JM</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+            {/* Brand & Social */}
+            <div className="space-y-8">
+              <div className="h-14 w-auto flex items-center">
+                <img src="/mahadev logo 2.png" alt="Mahadeva Travel Hub" className="h-full w-auto object-contain" />
               </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-lg leading-tight">{SITE_CONFIG.name}</span>
-                <span className="text-[10px] uppercase tracking-widest text-primary">{SITE_CONFIG.tagline}</span>
+              <div className="flex space-x-5">
+                <a href={SITE_CONFIG.social.facebook} className="text-white/40 hover:text-primary transition-colors">
+                  <Facebook size={20} />
+                </a>
+                <a href={SITE_CONFIG.social.instagram} className="text-white/40 hover:text-primary transition-colors">
+                  <Instagram size={20} />
+                </a>
+                <a href={SITE_CONFIG.social.twitter} className="text-white/40 hover:text-primary transition-colors">
+                  <Twitter size={20} />
+                </a>
               </div>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              {SITE_CONFIG.description}
-            </p>
-            <div className="flex space-x-4">
-              <a href={SITE_CONFIG.social.facebook} className="bg-white/10 p-2 rounded-full hover:bg-primary transition-colors">
-                <Facebook size={18} />
-              </a>
-              <a href={SITE_CONFIG.social.instagram} className="bg-white/10 p-2 rounded-full hover:bg-primary transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href={SITE_CONFIG.social.twitter} className="bg-white/10 p-2 rounded-full hover:bg-primary transition-colors">
-                <Twitter size={18} />
-              </a>
+
+            {/* Quick Navigation */}
+            <div>
+              <p className="text-white font-bold text-sm uppercase tracking-widest mb-8">Navigation</p>
+              <ul className="grid grid-cols-2 gap-y-4 gap-x-8 text-gray-400 text-sm">
+                {SITE_CONFIG.navigation.map(link => (
+                  <li key={link.name}><Link to={link.href} className="hover:text-primary transition-colors">{link.name}</Link></li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Direct Contact */}
+            <div>
+              <p className="text-white font-bold text-sm uppercase tracking-widest mb-8">Get In Touch</p>
+              <ul className="space-y-6 text-gray-400 text-sm">
+                <li className="flex items-center space-x-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <Phone size={16} className="text-primary group-hover:text-white" />
+                  </div>
+                  <span>{SITE_CONFIG.contact.phone}</span>
+                </li>
+                <li className="flex items-center space-x-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <Mail size={16} className="text-primary group-hover:text-white" />
+                  </div>
+                  <span className="break-all">{SITE_CONFIG.contact.email}</span>
+                </li>
+              </ul>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-bold text-lg mb-6">Quick Links</h3>
-            <ul className="space-y-4 text-gray-400 text-sm">
-              {SITE_CONFIG.navigation.map(link => (
-                <li key={link.name}><Link to={link.href} className="hover:text-primary transition-colors">{link.name}</Link></li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Categories */}
-          <div>
-            <h3 className="font-bold text-lg mb-6">Popular Categories</h3>
-            <ul className="space-y-4 text-gray-400 text-sm">
-              {SITE_CONFIG.categories.map(cat => (
-                <li key={cat.name}><Link to={cat.href} className="hover:text-primary transition-colors">{cat.name}</Link></li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="font-bold text-lg mb-6">Contact Info</h3>
-            <ul className="space-y-4 text-gray-400 text-sm">
-              <li className="flex items-start space-x-3">
-                <MapPin size={18} className="text-primary mt-0.5" />
-                <span>{SITE_CONFIG.contact.address}</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Phone size={18} className="text-primary" />
-                <span>{SITE_CONFIG.contact.phone}</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail size={18} className="text-primary" />
-                <span>{SITE_CONFIG.contact.email}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
 
         <div className="border-t border-white/10 mt-16 pt-8 text-center text-gray-500 text-xs">
           <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name} {SITE_CONFIG.tagline}. All rights reserved.</p>
@@ -232,11 +216,11 @@ const Footer: React.FC = () => {
   );
 };
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, transparentNavTheme }) => {
   return (
     <div className="min-h-screen flex flex-col pt-0 selection:bg-primary/20 selection:text-primary">
-      <Navbar />
-      <main className="flex-grow overflow-x-hidden">
+      <Navbar theme={transparentNavTheme} />
+      <main className="flex-grow">
         {children}
       </main>
       <Footer />

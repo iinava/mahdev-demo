@@ -4,16 +4,16 @@ export const HOME_CONFIG = {
     title: {
       line1: "Let's Make Your",
       line2: '   Best Trip  ',
-      line3: 'Mahadev Travels'
+      line3: 'Mahadeva travel hub'
     },
-    description: 'Bespoke journeys curated for the modern world explorer. Create the route you want to travel with our signature concierge.',
+    description: 'Bespoke journeys curated for the modern world explorer. Create the route you want to travel with our signature team.',
     illustrations: {
       left: 'https://ouch-prod-var-cdn.icons8.com/gd/illustrations/thumbs/Sht1gZ-h7SLufmwx.webp',
       right: 'https://ouch-prod-var-cdn.icons8.com/ey/illustrations/thumbs/UJdhKR-PzhH8lpud.webp'
     },
     search: {
-      destination: 'Dubai, UAE',
-      dateLabel: 'Choose Date'
+      destination: 'Any Location',
+      dateLabel: 'Anytime'
     }
   },
   whyChooseUs: {
@@ -33,21 +33,21 @@ export const HOME_CONFIG = {
     titleAccent: 'Destinations',
     description: 'Most loved escapes by our community of travelers.',
     list: [
-      { name: 'Dubai', img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=60&w=300' },
-      { name: 'Bali', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=60&w=300' },
-      { name: 'Thailand', img: 'https://plus.unsplash.com/premium_photo-1661962958462-9e52fda9954d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-      { name: 'Kashmir', img: 'https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-      { name: 'Goa', img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&q=60&w=300' },
-      { name: 'Kerala', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&q=60&w=300' },
+      { name: 'Munnar', img: '/packages/moonar.jpg' },
+      { name: 'Wayanad', img: '/packages/wayanad.jpg' },
+      { name: 'Ooty', img: '/packages/ooty.jpg' },
+      { name: 'Kodaikanal', img: '/packages/kodaikanal.jpg' },
+      { name: 'Goa', img: '/packages/goa.png' },
+      { name: 'Varanasi', img: '/packages/varanasi.jpg' },
     ]
   },
   testimonials: {
     title: 'What Our',
     titleAccent: 'Travelers Say',
     list: [
-      { name: "Rahul Sharma", role: "Corporate Traveler", text: "The Dubai trip was flawless. Every detail was handled perfectly, from airport transfers to the Burj Khalifa visit. Highly recommended!", rating: 5 },
-      { name: "Anita Desai", role: "Family Vacation", text: "We took our parents to Kerala with Mahadev Travels. The houseboat experience was magical. Thank you for making it so comfortable for seniors.", rating: 5 },
-      { name: "Vikram Gill", role: "Solo Adventure", text: "Bali was a dream come true. The private guides provided by the agency were professional and very knowledgeable. Great value for money.", rating: 5 },
+      { name: "Rahul Sharma", role: "Corporate Traveler", text: "The Goa trip was flawless. Every detail was handled perfectly, from hotel transfers to the beach visits. Highly recommended!", rating: 5 },
+      { name: "Anita Desai", role: "Family Vacation", text: "We took our parents to Kerala with Mahadeva travel hub. The houseboat experience was magical. Thank you for making it so comfortable for seniors.", rating: 5 },
+      { name: "Vikram Gill", role: "Solo Adventure", text: "Wayanad was a dream come true. The private guides provided by the agency were professional and very knowledgeable. Great value for money.", rating: 5 },
     ]
   },
   cta: {

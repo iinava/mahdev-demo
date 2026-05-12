@@ -63,15 +63,10 @@ const Preloader: React.FC = () => {
         </div>
 
         {/* Text Section */}
-        <div className={`text-center space-y-3 transition-all duration-1000 ${loading ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          <h2 className="text-white font-black text-2xl tracking-tighter uppercase italic">
-            {SITE_CONFIG.name} <span className="text-primary not-italic">Travels</span>
+        <div className={`text-center transition-all duration-1000 px-6 ${loading ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          <h2 className="text-white font-black text-lg sm:text-2xl md:text-3xl tracking-tighter uppercase italic break-words max-w-xs sm:max-w-none">
+            {SITE_CONFIG.name}
           </h2>
-          <div className="flex items-center justify-center space-x-3">
-            <div className="h-[1px] w-12 bg-white/10" />
-            <p className="text-[10px] uppercase font-bold tracking-[0.5em] text-primary animate-pulse">Starting Your Journey</p>
-            <div className="h-[1px] w-12 bg-white/10" />
-          </div>
         </div>
 
       </div>
