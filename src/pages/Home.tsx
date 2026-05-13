@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { PACKAGES, CATEGORIES, getWhatsAppLink } from '../constants';
-import { ArrowRight, Star, ShieldCheck, Users, Clock, MessageCircle, MapPin } from 'lucide-react';
+import { ArrowRight, Star, ShieldCheck, Users, Clock, MessageCircle, MapPin, Bus } from 'lucide-react';
 import OptimizedImage from '../components/OptimizedImage';
+import { VEHICLES } from '../config/vehicles';
 
 import { HOME_CONFIG } from '../config/home';
 
@@ -253,34 +254,87 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* POPULAR DESTINATIONS */}
-      <section className="py-20 md:py-32 bg-light-bg">
+      {/* OUR FLEET SECTION */}
+      <section className="py-20 md:py-32 bg-gradient-to-b from-white via-[#F9FBFF] to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-20 gap-8 text-center md:text-left">
-            <div className="space-y-5">
-              <h2 className="text-navy font-black text-4xl md:text-6xl tracking-tight leading-tight">{HOME_CONFIG.destinations.title} <br className="md:hidden" /> <span className="text-primary">{HOME_CONFIG.destinations.titleAccent}</span></h2>
-              <p className="text-gray-500 text-lg md:text-xl max-w-xl font-medium">{HOME_CONFIG.destinations.description}</p>
+          <div className="text-center mb-16 space-y-5">
+            <div className="inline-flex items-center space-x-3 bg-white px-5 py-1.5 rounded-full border border-gray-100 shadow-sm mx-auto">
+              <Bus size={14} className="text-primary" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-navy">Custom Fleet</span>
             </div>
-            <Link to="/gallery" className="bg-white text-navy px-10 py-4 rounded-[20px] font-black text-sm uppercase tracking-widest border border-gray-100 shadow-sm hover:border-primary hover:text-primary transition-all">Explore Gallery</Link>
+            <h2 className="text-navy font-black text-4xl md:text-6xl tracking-tight leading-tight">Meet Our <br className="md:hidden" /> <span className="text-primary">Beasts</span> 🚐</h2>
+            <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto font-medium">Travel in style with our fleet of custom-engineered Mahadeva vehicles — each one with a name, a story, and a soul.</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
-            {HOME_CONFIG.destinations.list.map((city) => (
-              <Link to={`/packages?search=${city.name}`} key={city.name} className="group relative rounded-[32px] overflow-hidden aspect-[3/4] shadow-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-                <OptimizedImage 
-                  src={city.img} 
-                  alt={city.name} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500 z-10" />
-                <div className="absolute bottom-6 left-0 w-full text-center px-4 z-20">
-                  <p className="text-white font-black text-xl md:text-2xl tracking-tight">{city.name}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {VEHICLES.slice(0, 3).map((vehicle, i) => {
+              const rotations = ['rotate-1', '-rotate-1', 'rotate-1'];
+              return (
+                <div
+                  key={vehicle.id}
+                  className={`group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 transform ${rotations[i]} hover:rotate-0 hover:-translate-y-2 border border-gray-100`}
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={vehicle.image}
+                      alt={vehicle.name}
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-1000"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
+                      <div>
+                        <p className="text-[9px] font-black uppercase tracking-widest text-white/60">{vehicle.nickname}</p>
+                        <h3 className="text-2xl font-black text-white tracking-tight">{vehicle.name}</h3>
+                      </div>
+                      <div className="bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-xl">
+                        {vehicle.capacity}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6 space-y-3">
+                    <div className="flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-primary">
+                      <Bus size={12} />
+                      <span>{vehicle.type}</span>
+                    </div>
+                    <p className="text-gray-500 text-sm font-medium leading-relaxed line-clamp-2">{vehicle.description}</p>
+                  </div>
                 </div>
-              </Link>
+              );
+            })}
+          </div>
+
+          {/* Remaining vehicles as a compact row */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {VEHICLES.slice(3).map((vehicle, i) => (
+              <div
+                key={vehicle.id}
+                className={`group flex items-center space-x-5 bg-white p-4 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 transform ${i % 2 === 0 ? '-rotate-1' : 'rotate-1'} hover:rotate-0 hover:scale-[1.02]`}
+              >
+                <div className="w-24 h-24 rounded-2xl overflow-hidden shrink-0">
+                  <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" />
+                </div>
+                <div className="space-y-1 min-w-0">
+                  <p className="text-[9px] font-black uppercase tracking-widest text-primary">{vehicle.nickname}</p>
+                  <h4 className="text-lg font-black text-navy truncate">{vehicle.name}</h4>
+                  <p className="text-xs text-gray-400 font-bold">{vehicle.type} · {vehicle.capacity}</p>
+                </div>
+              </div>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              to="/contact"
+              className="inline-flex items-center space-x-3 bg-navy text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-primary transition-all shadow-xl active:scale-95"
+            >
+              <Bus size={20} />
+              <span>Request a Vehicle</span>
+            </Link>
           </div>
         </div>
       </section>
+
+
 
       {/* TESTIMONIALS */}
       <section className="py-24 bg-white">

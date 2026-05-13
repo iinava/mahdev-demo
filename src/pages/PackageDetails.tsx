@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { PACKAGES, getWhatsAppLink } from '../constants';
-import { Clock, MapPin, CheckCircle, XCircle, MessageCircle, Star, Phone, Check } from 'lucide-react';
+import { Clock, MapPin, CheckCircle, XCircle, MessageCircle, Star, Phone, Check, Bus } from 'lucide-react';
 import OptimizedImage from '../components/OptimizedImage';
+import { VEHICLES } from '../config/vehicles';
 
 const PackageDetails: React.FC = () => {
   const [pkg, setPkg] = useState<any>(null);
@@ -126,6 +127,38 @@ const PackageDetails: React.FC = () => {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Vehicle Available Upon Request */}
+              <div className="space-y-6">
+                <h2 className="text-3xl font-black text-navy flex items-center gap-3">
+                  <span className="text-4xl">🚐</span> Travel in Our Custom Rides
+                </h2>
+                <div className="bg-gradient-to-br from-[#F0F7FF] to-[#F9FBFF] p-6 md:p-8 rounded-[2.5rem] border border-primary/10 space-y-6">
+                  <div className="grid grid-cols-3 gap-3">
+                    {VEHICLES.slice(0, 3).map((v) => (
+                      <div key={v.id} className="relative rounded-2xl overflow-hidden aspect-square group">
+                        <img src={v.image} alt={v.name} className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
+                        <div className="absolute bottom-2 left-2 right-2">
+                          <p className="text-white font-black text-xs truncate">{v.name}</p>
+                          <p className="text-white/60 text-[9px] font-bold">{v.capacity}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="text-center space-y-3">
+                    <p className="text-navy font-black text-lg">Premium Vehicles Available on Request</p>
+                    <p className="text-gray-500 text-sm font-medium leading-relaxed">Our fleet of custom-engineered Mahadeva vehicles — each with a unique name and character — are available for your trip. Just ask!</p>
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center space-x-2 bg-navy text-white px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-primary transition-all mt-2"
+                    >
+                      <Bus size={16} />
+                      <span>Request a Vehicle</span>
+                    </Link>
                   </div>
                 </div>
               </div>

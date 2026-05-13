@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/Layout';
-import { Mail, Phone, MapPin, MessageCircle, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Clock, Bus, Check } from 'lucide-react';
 import { getWhatsAppLink } from '../constants';
 import { SITE_CONFIG } from '../config/site';
+import { VEHICLES } from '../config/vehicles';
 
 const Contact: React.FC = () => {
+  const [selectedVehicle, setSelectedVehicle] = useState<string>('');
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
-    const message = `Hi! My name is ${data.name}. I want to enquire about ${data.subject}. My email is ${data.email}. Message: ${data.message}`;
+    const message = `Hi! My name is ${data.name}. I want to enquire about ${data.subject}.${selectedVehicle ? ` Preferred vehicle: ${selectedVehicle}.` : ''} My email is ${data.email}. Message: ${data.message}`;
     window.location.href = getWhatsAppLink(message);
   };
 
@@ -115,6 +118,70 @@ const Contact: React.FC = () => {
                     placeholder="Enquiry for Goa Package"
                   />
                 </div>
+
+                {/* VEHICLE PICKER — Visual Cards */}
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-2">
+                    <Bus size={12} />
+                    Choose Your Ride (Optional)
+                  </label>
+                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                    {VEHICLES.map((v) => {
+                      const isSelected = selectedVehicle === v.name;
+                      return (
+                        <button
+                          key={v.id}
+                          type="button"
+                          onClick={() => setSelectedVehicle(isSelected ? '' : v.name)}
+                          className={`relative rounded-2xl overflow-hidden aspect-square group transition-all duration-300 cursor-pointer ${
+                            isSelected
+                              ? 'ring-3 ring-primary ring-offset-2 shadow-lg scale-[1.03]'
+                              : 'ring-1 ring-gray-100 hover:ring-primary/30 hover:shadow-md'
+                          }`}
+                        >
+                          <img
+                            src={v.image}
+                            alt={v.name}
+                            className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className={`absolute inset-0 transition-all duration-300 ${
+                            isSelected
+                              ? 'bg-gradient-to-t from-primary/90 via-primary/30 to-transparent'
+                              : 'bg-gradient-to-t from-navy/70 via-navy/10 to-transparent'
+                          }`} />
+
+                          {/* Selected checkmark */}
+                          {isSelected && (
+                            <div className="absolute top-1.5 right-1.5 w-5 h-5 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                              <Check size={12} strokeWidth={3} className="text-white" />
+                            </div>
+                          )}
+
+                          <div className="absolute bottom-1.5 left-1.5 right-1.5">
+                            <p className={`font-black text-[10px] truncate ${isSelected ? 'text-white' : 'text-white/90'}`}>{v.name}</p>
+                            <p className="text-white/50 text-[8px] font-bold">{v.capacity}</p>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {selectedVehicle && (
+                    <div className="flex items-center justify-between bg-primary/5 border border-primary/10 rounded-xl px-4 py-2">
+                      <p className="text-xs font-black text-primary flex items-center gap-2">
+                        <Bus size={14} />
+                        {selectedVehicle} — {VEHICLES.find(v => v.name === selectedVehicle)?.nickname}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedVehicle('')}
+                        className="text-[10px] font-black text-gray-400 hover:text-red-500 uppercase tracking-widest transition-colors"
+                      >
+                        Clear
+                      </button>
+                    </div>
+                  )}
+                </div>
+
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-widest text-primary">Message</label>
                   <textarea
