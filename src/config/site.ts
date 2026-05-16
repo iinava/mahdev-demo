@@ -11,16 +11,13 @@ export const SITE_CONFIG = {
     timing: 'Mon - Sat: 10:00 AM - 7:00 PM'
   },
   social: {
-    facebook: '#',
-    instagram: '#',
-    twitter: '#'
+    instagram: 'https://www.instagram.com/mahadeva_travel_hub_/'
   },
   navigation: [
     { name: 'Home', href: '/' },
-    { name: 'Packages', href: '/packages' },
-    { name: 'About', href: '/about' },
+    { name: 'About Us', href: '/about' },
     { name: 'Gallery', href: '/gallery' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact Us', href: '/contact' },
   ],
   categories: [
     { name: 'Domestic Tours', href: '/packages?cat=Domestic' },

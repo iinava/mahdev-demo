@@ -1,29 +1,33 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Packages from './pages/Packages';
-import PackageDetails from './pages/PackageDetails';
-import About from './pages/About';
-import Gallery from './pages/Gallery';
-import Contact from './pages/Contact';
-import CustomTour from './pages/CustomTour';
 import ScrollToTop from './components/ScrollToTop';
-import Preloader from './components/Preloader';
+import PreloaderTwo from './components/PreloaderTwo';
+
+// Lazy loading pages for faster initial load time (Code Splitting)
+const Home = lazy(() => import('./pages/Home'));
+const Packages = lazy(() => import('./pages/Packages'));
+const PackageDetails = lazy(() => import('./pages/PackageDetails'));
+const About = lazy(() => import('./pages/About'));
+const Gallery = lazy(() => import('./pages/Gallery'));
+const Contact = lazy(() => import('./pages/Contact'));
+const CustomTour = lazy(() => import('./pages/CustomTour'));
 
 const App: React.FC = () => {
   return (
     <Router>
-      <Preloader />
+      <PreloaderTwo />
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/packages" element={<Packages />} />
-        <Route path="/package-details" element={<PackageDetails />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/custom-tour" element={<CustomTour />} />
-      </Routes>
+      <Suspense fallback={<div className="h-screen w-full bg-[#F8FAFC]" />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/packages" element={<Packages />} />
+          <Route path="/package-details" element={<PackageDetails />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/custom-tour" element={<CustomTour />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 };
