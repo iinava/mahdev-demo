@@ -26,71 +26,65 @@ const Navbar: React.FC<{ theme?: 'light' | 'dark' }> = ({ theme = 'light' }) => 
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ease-out will-change-transform ${isScrolled ? 'py-3 md:py-4' : 'py-5 md:py-8'}`}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-          <div className={`relative flex justify-between items-center transition-all duration-300 rounded-2xl will-change-transform ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.06)] py-3 px-5 md:px-8' : 'bg-transparent py-0 px-0'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 py-6 px-6 lg:px-10`}>
+        <div className={`max-w-[1400px] mx-auto transition-all duration-700 border ${isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-[2rem] py-3 px-8 border-white/20' : 'bg-transparent py-0 px-0 border-transparent'}`}>
+          <div className="flex justify-between items-center">
             
             {/* Logo Section */}
-            <Link to="/" className="group relative z-50">
-              <div className="h-8 sm:h-10 w-auto group-hover:scale-105 active:scale-95 transition-all duration-500 flex items-center">
+            <Link to="/" className="shrink-0 relative group">
+              <div className="h-10 md:h-12 w-auto transition-all duration-500 group-hover:scale-105 group-hover:rotate-1">
                 <img 
                   src="/mahadev logo 2.png" 
                   alt="Mahadeva Travel Hub" 
                   className="h-full w-auto object-contain" 
                 />
               </div>
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-hover:w-full"></div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
+            {/* Desktop Navigation - Elegant Spacing */}
+            <div className="hidden lg:flex items-center space-x-12">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`px-4 py-2 text-[10px] uppercase font-bold tracking-[0.2em] transition-all duration-300 rounded-lg ${isScrolled ? 'text-navy/60 hover:text-navy hover:bg-navy/5' : (theme === 'dark' ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-navy/60 hover:text-navy hover:bg-navy/5')}`}
+                  className="text-[11px] font-black text-navy/70 hover:text-primary transition-all uppercase tracking-[0.2em] relative group"
                 >
                   {link.name}
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary rounded-full transition-all duration-300 group-hover:w-1 group-hover:h-1"></span>
                 </Link>
               ))}
-              <div className={`w-[1px] h-4 mx-4 ${isScrolled ? 'bg-gray-200' : (theme === 'dark' ? 'bg-white/20' : 'bg-gray-200')}`} />
-              <a
-                href={getWhatsAppLink(`Hello ${SITE_CONFIG.name}, I would like to enquire.`)}
-                className={`px-6 py-2.5 rounded-xl font-bold text-[9px] uppercase tracking-widest transition-all shadow-lg flex items-center space-x-2 active:scale-95 ml-4 ${
-                  isScrolled 
-                    ? 'bg-navy text-white hover:bg-primary shadow-navy/10' 
-                    : (theme === 'dark' ? 'bg-white text-navy hover:bg-primary hover:text-white shadow-black/10' : 'bg-navy text-white hover:bg-primary shadow-navy/10')
-                }`}
+            </div>
+
+            {/* Right Side - Call Button */}
+            <div className="hidden lg:flex items-center">
+              <a 
+                href={`tel:${SITE_CONFIG.contact.phone}`} 
+                className={`flex items-center space-x-3 px-6 py-3 rounded-full transition-all duration-500 border border-gray-100/50 hover:border-primary/30 hover:bg-white group ${isScrolled ? 'bg-navy/5' : 'bg-white/50 backdrop-blur-sm shadow-sm'}`}
               >
-                <MessageCircle size={14} className="text-primary" />
-                <span>Support</span>
+                <div className="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center transition-transform group-hover:rotate-[15deg]">
+                  <Phone size={14} />
+                </div>
+                <div className="text-left">
+                  <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Inquiry</p>
+                  <p className="text-xs font-black text-navy tracking-wider leading-none">{SITE_CONFIG.contact.phone}</p>
+                </div>
               </a>
             </div>
 
-            {/* Mobile Right Controls */}
-            <div className="lg:hidden flex items-center space-x-3 relative z-50">
-              <a 
-                href={`tel:${SITE_CONFIG.contact.phone.replace(/\s+/g, '')}`} 
-                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${isScrolled ? 'bg-navy/5 text-navy' : (theme === 'dark' ? 'bg-white/10 text-white backdrop-blur-md shadow-sm border border-white/10' : 'bg-white/10 text-navy backdrop-blur-md shadow-sm border border-navy/5')}`}
-              >
-                <Phone size={16} />
-              </a>
-              <button 
-                onClick={() => setIsOpen(!isOpen)} 
-                className={`w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-xl transition-all duration-500 ${
-                  isOpen ? 'bg-navy text-white' : 
-                  isScrolled ? 'bg-navy text-white shadow-lg' : 
-                  (theme === 'dark' ? 'bg-white/10 text-white backdrop-blur-md border border-white/10 shadow-lg' : 'bg-white shadow-lg text-navy border border-gray-100')
-                }`}
-                aria-label="Toggle menu"
-              >
-                <span className={`h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                <span className={`h-0.5 w-3 bg-current rounded-full transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
-                <span className={`h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-              </button>
-            </div>
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className={`lg:hidden w-12 h-12 flex items-center justify-center rounded-full transition-all ${isScrolled ? 'bg-navy text-white shadow-lg' : 'bg-white/80 backdrop-blur-md text-navy shadow-sm'}`}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </nav>
+
+
 
       {/* Modern Immersive Menu - Sliding Animation */}
       <div 
@@ -141,13 +135,20 @@ const Navbar: React.FC<{ theme?: 'light' | 'dark' }> = ({ theme = 'light' }) => 
 
           {/* Menu Footer */}
           <div className={`mt-auto pt-8 border-t border-white/10 transition-all duration-700 delay-300 ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="space-y-4">
-              <p className="text-white/40 text-[10px] uppercase font-bold tracking-widest">Connect with us</p>
-              <a href={getWhatsAppLink(`Hello ${SITE_CONFIG.name}`)} className="text-lg font-bold text-white flex items-center space-x-3 active:scale-95 transition-transform">
-                <MessageCircle size={18} className="text-primary" />
-                <span>Chat with Us</span>
-              </a>
-            </div>
+            <a href={`tel:${SITE_CONFIG.contact.phone}`} className="flex items-center space-x-4 mb-8 active:opacity-70 transition-opacity">
+              <Phone size={32} className="text-white" strokeWidth={1.5} />
+              <div>
+                <p className="text-sm text-white/60 mb-0.5">Call Now</p>
+                <p className="text-xl font-bold text-white tracking-wide">{SITE_CONFIG.contact.phone}</p>
+              </div>
+            </a>
+            <Link 
+              to="/packages"
+              onClick={() => setIsOpen(false)}
+              className="block w-full bg-[#1A98FF] hover:bg-[#007AFF] text-white text-center py-4 rounded-xl font-bold text-lg shadow-lg active:scale-95 transition-all"
+            >
+              Book A Trip
+            </Link>
           </div>
         </div>
       </div>
@@ -166,14 +167,8 @@ const Footer: React.FC = () => {
                 <img src="/mahadev logo 2.png" alt="Mahadeva Travel Hub" className="h-full w-auto object-contain" />
               </div>
               <div className="flex space-x-5">
-                <a href={SITE_CONFIG.social.facebook} className="text-white/40 hover:text-primary transition-colors">
-                  <Facebook size={20} />
-                </a>
-                <a href={SITE_CONFIG.social.instagram} className="text-white/40 hover:text-primary transition-colors">
+                <a href={SITE_CONFIG.social.instagram} className="text-white/40 hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                   <Instagram size={20} />
-                </a>
-                <a href={SITE_CONFIG.social.twitter} className="text-white/40 hover:text-primary transition-colors">
-                  <Twitter size={20} />
                 </a>
               </div>
             </div>
@@ -218,9 +213,9 @@ const Footer: React.FC = () => {
 
 const Layout: React.FC<LayoutProps> = ({ children, transparentNavTheme }) => {
   return (
-    <div className="min-h-screen flex flex-col pt-0 selection:bg-primary/20 selection:text-primary">
+    <div className="min-h-screen flex flex-col pt-0 selection:bg-primary/20 selection:text-primary overflow-x-hidden w-full relative">
       <Navbar theme={transparentNavTheme} />
-      <main className="flex-grow">
+      <main className="flex-grow w-full">
         {children}
       </main>
       <Footer />
