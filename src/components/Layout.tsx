@@ -27,7 +27,7 @@ const Navbar: React.FC<{ theme?: 'light' | 'dark' }> = ({ theme = 'light' }) => 
   return (
     <>
       <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 py-6 px-6 lg:px-10`}>
-        <div className={`max-w-[1400px] mx-auto transition-all duration-700 border ${isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-[2rem] py-3 px-8 border-white/20' : 'bg-transparent py-0 px-0 border-transparent'}`}>
+        <div className={`max-w-7xl mx-auto transition-all duration-700 border ${isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-[2rem] py-3 px-8 border-white/20' : 'bg-transparent py-0 px-0 border-transparent'}`}>
           <div className="flex justify-between items-center">
             
             {/* Logo Section */}
@@ -42,16 +42,16 @@ const Navbar: React.FC<{ theme?: 'light' | 'dark' }> = ({ theme = 'light' }) => 
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-hover:w-full"></div>
             </Link>
 
-            {/* Desktop Navigation - Elegant Spacing */}
-            <div className="hidden lg:flex items-center space-x-12">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8 xl:space-x-10">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="text-[11px] font-black text-navy/70 hover:text-primary transition-all uppercase tracking-[0.2em] relative group"
+                  className={`text-sm font-bold hover:text-primary transition-all uppercase tracking-wider relative group ${isScrolled ? 'text-navy/90' : (theme === 'dark' ? 'text-white/90 drop-shadow-md' : 'text-navy/90')}`}
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary rounded-full transition-all duration-300 group-hover:w-1 group-hover:h-1"></span>
+                  <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-1 bg-primary rounded-full transition-all duration-300 group-hover:w-1.5 group-hover:h-1.5"></span>
                 </Link>
               ))}
             </div>
@@ -60,14 +60,14 @@ const Navbar: React.FC<{ theme?: 'light' | 'dark' }> = ({ theme = 'light' }) => 
             <div className="hidden lg:flex items-center">
               <a 
                 href={`tel:${SITE_CONFIG.contact.phone}`} 
-                className={`flex items-center space-x-3 px-6 py-3 rounded-full transition-all duration-500 border border-gray-100/50 hover:border-primary/30 hover:bg-white group ${isScrolled ? 'bg-navy/5' : 'bg-white/50 backdrop-blur-sm shadow-sm'}`}
+                className={`flex items-center space-x-3 px-5 py-2 rounded-full transition-all duration-500 border border-gray-100/50 hover:border-primary/30 hover:bg-white group ${isScrolled ? 'bg-navy/5' : 'bg-white/50 backdrop-blur-sm shadow-sm'}`}
               >
-                <div className="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center transition-transform group-hover:rotate-[15deg]">
-                  <Phone size={14} />
+                <div className="w-10 h-10 rounded-full bg-navy text-white flex items-center justify-center transition-transform group-hover:rotate-[15deg]">
+                  <Phone size={16} />
                 </div>
-                <div className="text-left">
-                  <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Inquiry</p>
-                  <p className="text-xs font-black text-navy tracking-wider leading-none">{SITE_CONFIG.contact.phone}</p>
+                <div className="text-left pr-2">
+                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest leading-none mb-1">Inquiry</p>
+                  <p className="text-sm font-black text-navy tracking-wide leading-none">{SITE_CONFIG.contact.phone}</p>
                 </div>
               </a>
             </div>

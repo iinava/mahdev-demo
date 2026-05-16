@@ -6,6 +6,7 @@ import { ArrowRight, Star, ShieldCheck, Users, Clock, MessageCircle, MapPin, Bus
 import OptimizedImage from '../components/OptimizedImage';
 import { VEHICLES } from '../config/vehicles';
 import OfferModal from '../components/OfferModal';
+import CoolShape from '../components/CoolShape';
 
 import { HOME_CONFIG } from '../config/home';
 import { SITE_CONFIG } from '../config/site';
@@ -17,7 +18,7 @@ const Home: React.FC = () => {
       <OfferModal />
       {/* MODERN CENTERED HERO SECTION WITH FLANKING ILLUSTRATIONS */}
       {/* MAHADEVA SIGNATURE HERO */}
-      <section className="relative min-h-[100vh] flex items-center bg-white overflow-hidden pt-32 pb-20">
+      <section className="relative min-h-[100vh] flex items-center bg-light-bg overflow-hidden pt-32 pb-20">
         {/* Artistic Background Typography */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0 overflow-hidden">
           <span className="text-[20vw] font-black text-navy/[0.02] leading-none whitespace-nowrap uppercase tracking-tighter">
@@ -29,28 +30,39 @@ const Home: React.FC = () => {
         <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 rounded-l-[50%] blur-3xl -z-10 animate-pulse-slow"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-blue-400/5 rounded-r-[50%] blur-3xl -z-10 animate-pulse-slow"></div>
 
+        {/* Cool Abstract Shapes */}
+        <div className="absolute top-32 left-[5%] opacity-60 animate-float" style={{ animationDelay: '0.5s' }}>
+          <CoolShape className="w-16 h-16 md:w-24 md:h-24 rotate-12" />
+        </div>
+        <div className="absolute bottom-24 lg:bottom-40 right-[5%] lg:right-[42%] opacity-40 animate-float" style={{ animationDelay: '2s' }}>
+          <CoolShape className="w-20 h-20 md:w-32 md:h-32 -rotate-12" />
+        </div>
+        <div className="absolute top-[20%] right-[10%] lg:right-[8%] opacity-50 animate-float" style={{ animationDelay: '1.2s' }}>
+          <CoolShape className="w-12 h-12 md:w-16 md:h-16 rotate-45" />
+        </div>
+
         <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Image Section - Visible on Mobile (Appears first or second depending on design) */}
             <div className="lg:col-span-5 lg:order-2 relative group">
               {/* Main Image with decorative border */}
               <div className="relative z-10 w-full aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-[3rem] lg:rounded-[4rem] overflow-hidden shadow-2xl border-4 lg:border-8 border-white">
-                <img 
-                  src="/hero/illustration mahadeva.png" 
-                  alt="Mahadeva Luxury" 
+                <img
+                  src="/hero/buses.png"
+                  alt="Mahadeva Luxury"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent lg:hidden"></div>
-                
+
                 {/* Mobile Text Overlay (Optional, but let's keep text below for clarity) */}
               </div>
 
               {/* Secondary Floating Image - Repositioned for Mobile */}
-              <div className="absolute -left-6 -bottom-6 sm:-left-12 sm:-bottom-12 w-1/2 sm:w-2/3 aspect-square rounded-[2rem] sm:rounded-[3rem] overflow-hidden border-4 lg:border-8 border-white shadow-2xl z-20 animate-float">
-                <img 
-                  src="/hero/mahadevall.png" 
-                  alt="Explore More" 
+              <div className="absolute -left-4 -bottom-6 sm:-left-6 sm:-bottom-10 lg:-left-20 lg:-bottom-16 w-[35%] sm:w-[40%] lg:w-1/2 aspect-square rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] overflow-hidden border-4 lg:border-8 border-white shadow-2xl z-20 animate-float">
+                <img
+                  src="/hero/illustration mahadeva.png"
+                  alt="Explore More"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -73,7 +85,7 @@ const Home: React.FC = () => {
                   <span className="w-2 h-2 rounded-full bg-primary animate-ping"></span>
                   <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.3em] text-navy/60 leading-none">Crafting Memories Since 2024</span>
                 </div>
-                
+
                 <h1 className="text-navy text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-serif leading-[1] sm:leading-[0.95] tracking-tight">
                   Escape the <br className="hidden sm:block" />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-primary/80 relative inline-block">
@@ -83,7 +95,7 @@ const Home: React.FC = () => {
                     </svg>
                   </span>
                 </h1>
-                
+
                 <p className="text-gray-500 text-base sm:text-lg md:text-xl max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
                   Experience the pinnacle of travel with Mahadeva. We curate soul-stirring journeys designed specifically for your rhythm.
                 </p>
@@ -112,8 +124,8 @@ const Home: React.FC = () => {
 
               {/* Mobile Social Bar (Horizontal) */}
               <div className="flex lg:hidden items-center justify-center space-x-6 pt-4">
-                 <a href={SITE_CONFIG.social.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 hover:text-primary transition-all"><Instagram size={18} /></a>
-                 <a href={getWhatsAppLink('Hi Mahadeva Travel Hub!')} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 hover:text-primary transition-all"><MessageCircle size={18} /></a>
+                <a href={SITE_CONFIG.social.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 hover:text-primary transition-all"><Instagram size={18} /></a>
+                <a href={getWhatsAppLink('Hi Mahadeva Travel Hub!')} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center text-gray-400 hover:text-primary transition-all"><MessageCircle size={18} /></a>
               </div>
             </div>
 
@@ -123,7 +135,12 @@ const Home: React.FC = () => {
       </section>
 
       {/* CATEGORIES / QUICK LINKS SECTION */}
-      <section className="py-12 bg-white border-b border-gray-100 relative z-20 shadow-sm">
+      <section
+        className="py-12 bg-white border-b border-gray-100 relative z-20 shadow-sm"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(-45deg, rgba(0, 87, 217, 0.05), rgba(0, 87, 217, 0.05) 1px, transparent 1px, transparent 6px)'
+        }}
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-16 items-center">
             {[
@@ -336,13 +353,13 @@ const Home: React.FC = () => {
           <h2 className="text-navy font-bold text-3xl md:text-4xl tracking-tight">Glimpses of <span className="text-primary">Joy</span> 📸</h2>
           <p className="text-gray-500 mt-3 font-medium">Real moments from our unforgettable journeys.</p>
         </div>
-        
+
         {/* Marquee Container */}
         <div className="relative w-full flex overflow-x-auto md:overflow-hidden snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {/* Gradient Masks for smooth fade at edges */}
           <div className="absolute top-0 left-0 w-8 md:w-32 h-full bg-gradient-to-r from-light-bg to-transparent z-10 pointer-events-none"></div>
           <div className="absolute top-0 right-0 w-8 md:w-32 h-full bg-gradient-to-l from-light-bg to-transparent z-10 pointer-events-none"></div>
-          
+
           <div className="flex w-max animate-marquee-desktop space-x-4 md:space-x-6 px-4 md:px-3 py-4 md:py-0">
             {[...GALLERY_CONFIG.images, ...GALLERY_CONFIG.images].map((img, i) => (
               <div key={i} className="snap-center w-64 md:w-80 h-48 md:h-60 rounded-2xl md:rounded-[32px] overflow-hidden shrink-0 shadow-sm border border-gray-100 relative group cursor-pointer">
