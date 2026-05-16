@@ -63,5 +63,23 @@
       animation-play-state: paused;
     }
   }
+
+  /* iOS Safari Performance Overrides */
+  @supports (-webkit-touch-callout: none) {
+    .animate-pulse, .animate-pulse-slow {
+      animation: none !important;
+    }
+    .mix-blend-multiply {
+      mix-blend-mode: normal !important;
+    }
+    .blur-3xl, .blur-2xl {
+      /* Cap blur radius to save mobile GPU */
+      filter: blur(24px) !important;
+    }
+    .backdrop-blur-xl, .backdrop-blur-md {
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+  }
 }
 
