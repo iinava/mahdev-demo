@@ -11,7 +11,7 @@ export const SITE_CONFIG = {
     timing: 'Mon - Sat: 10:00 AM - 7:00 PM'
   },
   social: {
-    instagram: 'https://www.instagram.com/mahadeva_travel_hub_/'
+    instagram: 'https://www.instagram.com/mahadeva_travelhub_calicut/'
   },
   navigation: [
     { name: 'Home', href: '/' },
